@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Queue</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='queue_deque.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+    
+<body style="background-color: #772244;">
+    <div class="queue-container">  
+        <h1 class="queue-title">Queue</h1> 
+        
+        <div class="back-button-container">
+            <a href="/"><button class="button2">← Back</button></a>
+        </div> 
+        
+
+        <div class="queue-body-container">
+            <div class="queue-body" id="queue-body">
+                {% if elements %}
+                    {% for item in elements %}
+                    <div class="queue-item">{{ item }}</div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-queue-message">Queue is currently empty.</div>
+                {% endif %}
+            </div>
+            
+            <div class="labels">
+                <div class="label front-label">← FRONT</div>
+                <div class="label rear-label">REAR →</div>
+            </div>
+        </div>  
+        
+        <form method="POST" action="{{ url_for('queue_page') }}" class="controls">
+            <input type="text" id="element-input" name="value" placeholder="Enter item">
+            <button class="queue-btn" type="submit" name="action" value="enqueue">Enqueue</button>
+            <button class="queue-btn" type="submit" name="action" value="dequeue">Dequeue</button>
+        </form>
+    </div>
+</body>
+</html>
