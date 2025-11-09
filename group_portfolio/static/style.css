@@ -1,0 +1,139 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*  CUSTOM FONT INTEGRATION */
+@font-face {
+    font-family: 'NormalFont';
+    src: url('/static/fonts/LeagueGothic-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Home';
+    src: url('/static/fonts/Chido-Pop-Exfont83ab.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Navigation';
+    src: url('/static/fonts/Catarsid-Regular-Exfont30b4.otf') format('opentype');
+}
+
+/*  IMAGE OVERLAP EFFECT SA INDEX*/
+.overlap_bubble img {
+    width: 210px;
+    margin-left: -10px;
+    position: absolute;
+    z-index: 1;
+}
+
+.overlap_stars img {
+    width: 170px;
+    position: absolute;
+    z-index: 1;
+    left: 30px;
+    bottom: 20px;
+}
+
+/*  CUSTOM CONTAINERS */
+.container_home {
+    max-width: 1000px;
+    position: relative;
+    top: 40px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: #FFFFF0;
+    border: 3px solid #332244;
+    border-radius: 15px;
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    right: 60px;
+    z-index: 2;
+}
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    justify-content: right;
+    gap: 20px;
+}
+
+
+/*  CUSTOM FONT SETTINGS */
+.intro_font_big {
+    font-family: 'Home', Arial, sans-serif;
+    color: #ee9955;
+    text-align: right;
+    font-size: 60pt;
+    letter-spacing: 5px;
+    margin-bottom: 0;
+}
+
+.intro_font_big2 {
+    font-family: 'Home', Arial, sans-serif;
+    color: #ee9955;
+    text-align: right;
+    font-size: 60pt;
+    letter-spacing: 5px;
+    margin: 0;
+}
+
+h1 {
+  color: #332244;
+  text-shadow:
+     -2px -1px 0 black,
+      1px -1px 0 black,
+     -1px  1px 0 black,
+      1px  2px 0 black;
+}
+
+.intro_font_small {
+    font-family: 'NormalFont', Arial, sans-serif;
+    color: #333;
+    text-align: right;
+    font-size: 30pt;
+    letter-spacing: 2px;
+    position: relative;
+    top: 10px;
+}
+
+.button-choices {
+    display: flex;
+    justify-content: right;
+    gap: 30px;
+    margin-bottom: 10px;
+}
+
+
+/*  FILLED BUTTON */
+.button {
+    cursor: pointer;
+    background-color: #eedd88;
+    border-radius: 10px;
+    font-family: 'Navigation', Arial, sans-serif;
+    letter-spacing: 5px;letter-spacing: 5px;
+}
+
+.button:hover {
+    background-color: #e06699;
+}
+
+
+/*  TRANSPARENT BUTTON */
+.button2 {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-family: 'Navigation', Arial, sans-serif;
+    letter-spacing: 5px;
+    color: #333
+}
+
+.button2:hover {
+    color: #cd4d82;
+}

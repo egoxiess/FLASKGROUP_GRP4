@@ -1,0 +1,105 @@
+.queue-container {
+    max-width: 1000px;
+    position: relative;
+    top: 40px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: #FFFFF0;
+    border: 3px solid #332244;
+    border-radius: 15px;
+}
+
+.queue-title {
+    font-family: 'Home', Arial, sans-serif;
+    color: #ee9955;
+    text-align: center;
+    font-size: 40pt;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+}
+
+.back-button-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+        
+.queue-title {
+    margin-top: 50px;
+}
+    
+.queue-body-container {
+    background-color: #fff;
+    border: 2px solid #332244;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    min-height: 150px;
+    position: relative;
+}
+
+.queue-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.queue-item {
+    background-color: #eedd88;
+    border: 1px solid #332244;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-family: 'NormalFont', Arial, sans-serif;
+    font-size: 16px;
+}
+
+.empty-queue-message {
+    font-family: 'NormalFont', Arial, sans-serif;
+    color: #888;
+    font-style: italic;
+}
+
+.labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.label {
+    font-family: 'NormalFont', Arial, sans-serif;
+    font-weight: bold;
+    color: #332244;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#element-input {
+    padding: 10px;
+    border: 2px solid #332244;
+    border-radius: 5px;
+    font-family: 'NormalFont', Arial, sans-serif;
+    width: 200px;
+}
+
+.queue-btn {
+    cursor: pointer;
+    background-color: #eedd88;
+    border: 2px solid #332244;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-family: 'Navigation', Arial, sans-serif;
+    letter-spacing: 2px;
+    transition: background-color 0.3s;
+}
+
+.queue-btn:hover {
+    background-color: #e06699;
+}
