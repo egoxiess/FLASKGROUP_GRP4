@@ -1,14 +1,45 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Our Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='works.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 
-{% block title %}Works - G4 Website{% endblock %}
+<body style="background-color: #772244;">
+    <div class="container_home">
+        <div class="overlap_bubble"><img src="/static/imgs/bubble.png" alt="Bubble decoration"></div>
+        <div class="overlap_stars"><img src="/static/imgs/stars.png" alt="Star decoration"></div        >
+        
+        <div class="button-container">
+            <a href="/groupinfo"><button class="button2">Group Info</button></a>
+            <a href="/works"><button class="button2">Works</button></a>
+        </div>
+    
+        <div class="body-container">
+            <div class='works-page'>
+                <h1 class="works_title">Works of Group 4</h1>
+            
+                <div class="card-container">
+                    <a href="/queue" class="card">
+                        <img src='/static/imgs/Queue.jpg' alt="Work 1">
+                        <div class="overlay">
+                            <h2>Queue</h2>
+                            <p>Simulation of Queue</p>
+                        </div>
+                    </a>
+                
+                    <a href="/de-queue" class="card">
+                        <img src="/static/imgs/dequeue.jpg" alt="Work 2">
+                        <div class="overlay">
+                            <h2>DE Queue</h2>
+                            <p>Simulation of Double-Ended Queue</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 
-{% block styles %}
-{% endblock %}
-
-{% block content %}
-    <h1>OUR PROJECTS</h1>
-    <p>Please select one:</p>
-
-    <a href="/queue">Queue</a>
-    <a href="/dequeue">Dequeue</a>
-{% endblock %}
+</html>
