@@ -1,0 +1,108 @@
+@font-face {
+  font-family: 'LeagueGothic';
+  src: url('/static/LeagueGothic-CondensedRegular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'LeagueGothic', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f8f9fa;
+}
+.header {
+  background: #343a40;
+  color: #fff;
+  padding: 12px;
+}
+
+.works-page {
+  margin-top: 50px;
+  margin-left: 5px;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  z-index: 10;
+}
+
+.works-page .works_title {
+  font-family: 'Home', Arial, sans-serif;
+  color: #ee9955;
+  text-align: right;
+  font-size: 60pt;
+  letter-spacing: 5px;
+  margin: 0;
+}
+
+.works-page .card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
+
+.works-page .card {
+  display: block;
+  position: relative;
+  width: 300px;
+  height: 335px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.works-page .card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: all 0.5s ease;
+}
+
+.works-page .card:hover img {
+  transform: scale(1.1);
+  filter: blur(3px) brightness(0.8);
+}
+
+.works-page .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ededed;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+}
+
+.works-page .card:hover .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.works-page .overlay h2 {
+  font-family: 'Home', Arial, sans-serif;
+  letter-spacing: 1px;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.works-page .overlay p {
+  font-family: 'Navigation', Arial, sans-serif;
+  font-size: 15px;
+  opacity: 1;
+}
