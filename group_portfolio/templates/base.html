@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Group 4 Website{% endblock %}</title>
+
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <nav>
+        <a href = "/index">Home</a>
+        <a href = "/works">Works</a>
+        <a href = "/groupinfo">About</a>
+    </nav>
+    {% block content %}{% endblock %}
+</body>
+</html>

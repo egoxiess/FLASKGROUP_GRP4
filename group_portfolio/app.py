@@ -1,0 +1,70 @@
+from flask import Flask, render_template, request
+from queue_deque import Queue, Deque
+
+app = Flask(__name__)
+
+queue = Queue()
+deque = Deque()
+
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+@app.route("/works")
+def works():
+    return render_template("works.html")
+
+
+@app.route("/groupinfo")
+def groupinfo():
+    return render_template("groupinfo.html")
+
+
+@app.route("/queue", methods=["GET", "POST"])
+def queue_page():
+    message = ""
+    if request.method == "POST":
+        action = request.form.get("action")
+        value = request.form.get("value")
+
+        if action == "enqueue" and value:
+            queue.enqueue(value)
+            message = f"Enqueued: {value}"
+        elif action == "dequeue":
+            removed = queue.dequeue()
+            message = f"Dequeued: {removed}" if removed else "Queue is empty!"
+
+    return render_template("queue.html",
+                           elements=queue.display(),
+                           message=message)
+
+
+@app.route("/deque", methods=["GET", "POST"])
+def deque_page():
+    message = ""
+    if request.method == "POST":
+        action = request.form.get("action")
+        value = request.form.get("value")
+
+        if action == "insert_front" and value:
+            deque.insert_front(value)
+            message = f"Inserted at front: {value}"
+        elif action == "insert_rear" and value:
+            deque.insert_rear(value)
+            message = f"Inserted at rear: {value}"
+        elif action == "delete_front":
+            removed = deque.delete_front()
+            message = f"Deleted from front: {removed}" if removed else "Deque is empty!"
+        elif action == "delete_rear":
+            removed = deque.delete_rear()
+            message = f"Deleted from rear: {removed}" if removed else "Deque is empty!"
+
+    return render_template("deque.html",
+                           elements=deque.display(),
+                           message=message)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
