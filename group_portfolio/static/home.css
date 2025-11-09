@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'LeagueGothic';
+  src: url('/static/LeagueGothic-CondensedRegular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'LeagueGothic', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f8f9fa;
+}
+.header {
+  background: #343a40;
+  color: #fff;
+  padding: 12px;
+}
+.nav-button {
+  margin-right: 8px;
+  padding: 8px 12px;
+  background: #495057;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+.button-choices button {
+  margin: 8px;
+  padding: 10px 14px;
+}
