@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'LeagueGothic';
+  src: url('/static/LeagueGothic-CondensedRegular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'LeagueGothic', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f8f9fa;
+}
+.header {
+  background: #343a40;
+  color: #fff;
+  padding: 12px;
+}
+
+.groupinfo-page {
+  margin-top: 50px;
+  margin-left: 5px;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  z-index: 10;
+}
+
+.groupinfo-page .groupinfo_title {
+  font-family: 'Home', Arial, sans-serif;
+  color: #ee9955;
+  text-align: right;
+  font-size: 60pt;
+  letter-spacing: 5px;
+  margin: 0;
+}
+
+.groupinfo-page .groupinfo_text {
+  font-family: 'Navigation', Arial, sans-serif;
+  color: #333;
+  text-align: right;
+  letter-spacing: 5px;
+  margin: 0;
+}
+
+.groupinfo-page .groupmembers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.groupinfo-page .member {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.groupinfo-page .member img {
+  height: 200px;
+  weight: 200px;
+  border-radius: 50%;
+  
+}
+
+.groupinfo-page .description .names {
+  font-family: 'Home', Arial, sans-serif;
+  color: #ee9955;
+  text-shadow: 1px 1px 1px #333;
+}
