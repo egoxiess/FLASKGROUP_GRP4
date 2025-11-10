@@ -1,18 +1,78 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Our Website</title>
+    <link rel="stylesheet" href="CSS/group_info.css">
+    <link rel="stylesheet" href='CSS/style.css'>
+</head>
 
-{% block title %}About - G4 Website{% endblock %}
-
-{% block styles %}
-{% endblock %}
-
-{% block content %}
-    <h1>Members:</h1>
-    <list>
-        <li>Ampon, Arsher</li>
-        <li>Buensalida, Jimuel</li>
-        <li>Dacillo, Aldrian Ralph</li>
-        <li>Gacer, Andrei Blair</li>
-        <li>Marzan, Christian Rain</li>
-        <li>Quintana, Leigh Anne</li>
-        <li>Vivas, Zandrick Kirn Aaron</li>
-{% endblock %}
+<body style="background-color: #772244;">
+    <div class="container_home">
+        <div class="overlap_bubble"><img src="images/bubble.png" alt="Bubble decoration"></div>
+        <div class="overlap_stars"><img src="images/stars.png" alt="Star decoration"></div        >
+        
+        <div class="button-container">
+            <a href="/groupinfo"><button class="button2">Group Info</button></a>
+            <a href="/works"><button class="button2">Works</button></a>
+        </div>
+    
+        <div class="body-container">
+            <div class='groupinfo-page'>
+                <h1 class="groupinfo_title">Who are Group 4?</h1>
+                <p class="groupinfo_text">Group 4 consists of 7 individuals from BSCpE 2-3</p>
+                
+                <div class="groupmembers">
+                    <a class="member">
+                        <img src='images/no_icon.jpg' alt="Member 1">
+                        <div class="description">
+                            <h2 class="names">Ampon, Arsher Roey R.</h2>
+                        </div>
+                    </a>
+                    
+                    <a class="member">
+                        <img src='images/no_icon.jpg' alt="Member 2">
+                        <div class="description">
+                            <h2 class="names">Buensalida, Jimuel U.</h2>
+                        </div>
+                    </a>
+                    
+                     <a class="member">
+                        <img src='images/no_icon.jpg' alt="Member 3">
+                        <div class="description">
+                            <h2 class="names">Dacillo, Aldrian Ralph M.</h2>
+                        </div>
+                    </a>
+                    
+                    <a class="member">
+                        <img src='images/no_icon.jpg' alt="Member 4">
+                        <div class="description">
+                            <h2 class="names">Gacer, Andrei Bleir Y.</h2>
+                        </div>
+                    </a>
+                    
+                    <a class="member">
+                        <img src='images/no_icon.jpg' alt="Member 5">
+                        <div class="description">
+                            <h2 class="names">Marzan Christian Rain L.</h2>
+                        </div>
+                    </a>
+                    
+                    <a class="member">
+                        <img src='images/no_icon.jpg' alt="Member 6">
+                        <div class="description">
+                            <h2 class="names">Quintana, Leigh Anne C.</h2>
+                        </div>
+                    </a>
+                    
+                    <a class="member">
+                        <img src='images/no_icon.jpg' alt="Member 7">
+                        <div class="description">
+                            <h2 class="names">Vivas, Zandrick Kirk Aaron E.</h2>
+                        </div>
+                    </a>
+                </div>
+            </dv>
+        </div>
+    </div>
+</body>
+</html>
