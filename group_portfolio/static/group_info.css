@@ -41,7 +41,7 @@ body {
   color: #333;
   text-align: right;
   letter-spacing: 5px;
-  margin: 0;
+  margin-top: 20px;
 }
 
 .groupinfo-page .groupmembers {
@@ -62,6 +62,7 @@ body {
 }
 
 .groupinfo-page .member img {
+  margin: 10px;
   height: 200px;
   weight: 200px;
   border-radius: 50%;
@@ -69,7 +70,19 @@ body {
 }
 
 .groupinfo-page .description .names {
-  font-family: 'Home', Arial, sans-serif;
-  color: #ee9955;
-  text-shadow: 1px 1px 1px #333;
+ font-family: 'Home', Arial, sans-serif;
+ color: #ee9955;
+ text-align: right;
+ letter-spacing: 5px;
+ margin: 15px;
+}
+
+.groupinfo-page h2 {
+   color: #332244;
+  text-shadow:
+     -2px -1px 0 black,
+      1px -1px 0 black,
+     -1px  1px 0 black,
+      1px  2px 0 black;
+
 }
