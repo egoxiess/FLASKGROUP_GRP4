@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request
+from binary_tree import BinaryTree
 from queue_deque import Queue, Deque
 
 app = Flask(__name__)
-
+tree = BinaryTree()
 queue = Queue()
 deque = Deque()
 
@@ -65,6 +66,46 @@ def deque_page():
                            elements=deque.display(),
                            message=message)
 
+
+@app.route("/binary_tree", methods=["GET", "POST"])
+def binary_tree_page():
+    message = ""
+    highlight_val = None  # Initialize the variable to track the searched number
+
+    if request.method == "POST":
+        action = request.form.get("action")
+        value = request.form.get("value")
+
+        if value:
+            try:
+                val_int = int(value)
+                
+                if action == "insert":
+                    tree.root = tree.insert(tree.root, val_int)
+                    message = f"Inserted: {val_int}"
+                
+                elif action == "delete":
+                    tree.root = tree.delete_node(tree.root, val_int)
+                    message = f"Deleted: {val_int}"
+                
+                elif action == "search":
+                    result = tree.search(tree.root, val_int)
+                    if result:
+                        message = "" 
+                        highlight_val = result.key
+                    else:   
+                        message = f"Node {val_int} not found."
+                        
+            except ValueError:
+                message = "Input must be an integer."
+
+    elements = tree.post_traversal(tree.root, [])
+    
+    return render_template("binary_tree.html", 
+                           root=tree.root, 
+                           elements=elements, 
+                           message=message,
+                           highlight_val=highlight_val) #
 
 if __name__ == "__main__":
     app.run(debug=True)
