@@ -118,7 +118,9 @@ def binary_tree_page():
 @app.route("/bst", methods=["GET", "POST"])
 def bst_page():
     message = ""
-    highlight_val = None
+    action = None
+    val_int = None 
+
     if request.method == "POST":
         action = request.form.get("action")
         value = request.form.get("value")
@@ -139,28 +141,26 @@ def bst_page():
         
         elif action == "search" and val_int is not None:
             found = bst.search(bst.root, val_int)
-            if found:
-                message = f"Found node with key: {val_int}"
-                highlight_val = val_int
-                print(f"DEBUG: Set highlight_val to {highlight_val}, type: {type(highlight_val)}")
-            else:
-                message = f"Key {val_int} not found"
+            message = f"Found node with key: {val_int}" if found else f"Key {val_int} not found"
         
         elif action == "height":
             h = bst.find_height(bst.root)
             message = f"Height of tree: {h}"
-            print(f"DEBUG: Calculated height={h}")
             
         elif action == "max":
             max_val = bst.get_max_value(bst.root)
             message = f"Max value: {max_val}" if max_val is not None else "Tree is empty"
 
-    print(f"DEBUG: Rendering with highlight_val={highlight_val}")
+    tree_data = tree_to_dict(bst.root)
+
+    highlight_val = val_int if (action == "search" and "found node" in message.lower()) else None
+
     return render_template("bst.html", 
-                           root=bst.root,
+                           tree_data=tree_data,
                            elements=get_inorder_elements(bst.root), 
                            message=message,
                            highlight_val=highlight_val)
 
 if __name__ == "__main__":
     app.run(debug=True)
+
