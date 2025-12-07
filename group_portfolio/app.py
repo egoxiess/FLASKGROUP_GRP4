@@ -1,27 +1,32 @@
 from flask import Flask, render_template, request
-from binary_tree import BinaryTree
 from queue_deque import Queue, Deque
+from bst import BinarySearchTree
 
 app = Flask(__name__)
-tree = BinaryTree()
+
 queue = Queue()
 deque = Deque()
+bst = BinarySearchTree()
 
+def get_inorder_elements(root):
+    elements = []
+    if root:
+        elements = get_inorder_elements(root.left)
+        elements.append(root.key)
+        elements = elements + get_inorder_elements(root.right)
+    return elements
 
 @app.route("/")
 def index():
     return render_template("index.html")
 
-
 @app.route("/works")
 def works():
     return render_template("works.html")
 
-
 @app.route("/groupinfo")
 def groupinfo():
     return render_template("groupinfo.html")
-
 
 @app.route("/queue", methods=["GET", "POST"])
 def queue_page():
@@ -40,7 +45,6 @@ def queue_page():
     return render_template("queue.html",
                            elements=queue.display(),
                            message=message)
-
 
 @app.route("/deque", methods=["GET", "POST"])
 def deque_page():
@@ -66,46 +70,42 @@ def deque_page():
                            elements=deque.display(),
                            message=message)
 
-
-@app.route("/binary_tree", methods=["GET", "POST"])
-def binary_tree_page():
+@app.route("/bst", methods=["GET", "POST"])
+def bst_page():
     message = ""
-    highlight_val = None  # Initialize the variable to track the searched number
-
     if request.method == "POST":
         action = request.form.get("action")
         value = request.form.get("value")
+        
+        try:
+            val_int = int(value) if value else None
+        except ValueError:
+            val_int = None
+            message = "Please enter a valid integer."
 
-        if value:
-            try:
-                val_int = int(value)
-                
-                if action == "insert":
-                    tree.root = tree.insert(tree.root, val_int)
-                    message = f"Inserted: {val_int}"
-                
-                elif action == "delete":
-                    tree.root = tree.delete_node(tree.root, val_int)
-                    message = f"Deleted: {val_int}"
-                
-                elif action == "search":
-                    result = tree.search(tree.root, val_int)
-                    if result:
-                        message = "" 
-                        highlight_val = result.key
-                    else:   
-                        message = f"Node {val_int} not found."
-                        
-            except ValueError:
-                message = "Input must be an integer."
+        if action == "insert" and val_int is not None:
+            bst.root = bst.insert(bst.root, val_int)
+            message = f"Inserted: {val_int}"
+        
+        elif action == "delete" and val_int is not None:
+            bst.root = bst.delete(bst.root, val_int)
+            message = f"Deleted: {val_int}"
+        
+        elif action == "search" and val_int is not None:
+            found = bst.search(bst.root, val_int)
+            message = f"Found node with key: {val_int}" if found else f"Key {val_int} not found"
+        
+        elif action == "height":
+            h = bst.find_height(bst.root)
+            message = f"Height of tree: {h}"
+            
+        elif action == "max":
+            max_val = bst.get_max_value(bst.root)
+            message = f"Max value: {max_val}" if max_val is not None else "Tree is empty"
 
-    elements = tree.post_traversal(tree.root, [])
-    
-    return render_template("binary_tree.html", 
-                           root=tree.root, 
-                           elements=elements, 
-                           message=message,
-                           highlight_val=highlight_val) #
+    return render_template("bst.html", 
+                           elements=get_inorder_elements(bst.root), 
+                           message=message)
 
 if __name__ == "__main__":
     app.run(debug=True)
