@@ -29,69 +29,42 @@
     background-color: #fff;
     border: 2px solid #332244;
     border-radius: 10px;
+    position: relative;
     padding: 20px;
     margin-bottom: 20px;
     height: 500px;
     min-height: 400px;
-    display: flex;       
-    justify-content: center; 
-    align-items: flex-start; 
     overflow: auto;          
     padding-top: 50px;       
 }
 
 .tree {
     font-family: 'NormalFont', Arial, sans-serif;
+    display: inline-block;
+    min-width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.tree ul {
+    padding-top: 20px; 
+    position: relative;
     display: flex;
     justify-content: center;
 }
 
-.tree ul {
-    display: flex;
-    padding-top: 20px; 
-    position: relative;
-    transition: all 0.5s;
-}
-
 .tree li {
-    float: left; 
     text-align: center;
     list-style-type: none;
     position: relative;
-    padding: 20px 5px 0 5px;
-    transition: all 0.5s;
+    padding: 20px 10px 0 10px;
+    display: inline-block;
+    vertical-align: top;
 }
 
-.tree li::before, .tree li::after {
-    content: '';
-    position: absolute; 
-    top: 0; 
-    right: 50%;
-    border-top: 3px solid #332244;
-    width: 50%; 
-    height: 20px;
-}
-
-.tree li::after {
-    right: auto; 
-    left: 50%;
-    border-left: 3px solid #332244;
-}
-
-.tree li:only-child::after, .tree li:only-child::before {
+.tree li::before, .tree li::after, .tree ul ul::before {
     display: none;
-}
-.tree li:only-child { padding-top: 0;}
-.tree li:first-child::before, .tree li:last-child::after {
-    border: 0 none;
-}
-
-.tree li:last-child::before {
-    border-right: 3px solid #332244;
-    border-radius: 0 10px 0 0;
-}
-.tree li:first-child::after {
-    border-radius: 10px 0 0 0;
 }
 
 .node {
@@ -106,8 +79,8 @@
     font-weight: bold;
     font-size: 18px;
     color: #332244;
-    z-index: 2;
     position: relative;
+    z-index: 10;
     transition: all 0.3s;
 }
 
@@ -115,6 +88,7 @@
     background-color: #e06699 !important;
     color: #000 !important;
     transform: scale(1.2);
+    box-shadow: 0 0 10px #e06699;
 }
 
 .controls {
