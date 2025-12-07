@@ -1,0 +1,122 @@
+.tree-container {
+    max-width: 1000px;
+    position: relative;
+    top: 40px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: #FFFFF0;
+    border: 3px solid #332244;
+    border-radius: 15px;
+}
+
+.back-button-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.tree-title {
+    font-family: 'Home', Arial, sans-serif;
+    color: #ee9955;
+    text-align: center;
+    font-size: 40pt;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.tree-body-container {
+    background-color: #fff;
+    border: 2px solid #332244;
+    border-radius: 10px;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 20px;
+    height: 500px;
+    min-height: 400px;
+    overflow: auto;          
+    padding-top: 50px;       
+}
+
+.tree {
+    font-family: 'NormalFont', Arial, sans-serif;
+    display: inline-block;
+    min-width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.tree ul {
+    padding-top: 20px; 
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.tree li {
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 10px 0 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.tree li::before, .tree li::after, .tree ul ul::before {
+    display: none;
+}
+
+.node {
+    display: inline-block;
+    border: 3px solid #332244;
+    background-color: #eedd88;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px; 
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #332244;
+    position: relative;
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+.found-node {
+    background-color: #e06699 !important;
+    color: #000 !important;
+    transform: scale(1.2);
+    box-shadow: 0 0 10px #e06699;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tree-btn {
+    cursor: pointer;
+    background-color: #eedd88;
+    border: 2px solid #332244;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-family: 'Navigation', Arial, sans-serif;
+    letter-spacing: 2px;
+    transition: background-color 0.3s;
+}
+
+.tree-btn:hover {
+    background-color: #e06699;
+}
+
+#element-input {
+    padding: 10px;
+    border: 2px solid #332244;
+    border-radius: 5px;
+    font-family: 'NormalFont', Arial, sans-serif;
+    width: 200px;
+}
