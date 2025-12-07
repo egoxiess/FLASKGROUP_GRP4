@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Binary Search Tree</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tree.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+    
+<body style="background-color: #772244;">
+    <div class="tree-container">  
+        <h1 class="tree-title">Binary Search Tree</h1> 
+        
+        <div class="back-button-container">
+            <a href="/works"><button class="button2">← Back</button></a>
+        </div> 
+        
+        {% if message %}
+        <div style="text-align: center; margin: 10px 0; padding: 10px; background-color: #772244; border-radius: 5px; color: #ffffff; font-size: 16px; 
+        font-weight: bold; font-family: 'Navigation'; letter-spacing: 2px;">            
+        {{ message }}
+        </div>
+        {% endif %}
+        
+        {% if message and 'not found' in message.lower() %}
+        <div style="text-align: center; margin: 10px 0; padding: 10px; background-color: #772244; border-radius: 5px; color: #ffffff; font-size: 16px; 
+        font-weight: bold; font-family: 'Navigation'; letter-spacing: 2px;">
+            No Node Found
+        </div>
+        {% endif %}
+        
+        <div class="tree-body-container">
+            <!-- UPDATED CLASS: tf-tree replaced with tree -->
+            <div class="tree">
+                <ul>
+                    {% macro render_node(node) %}
+                        {% if node %}
+                        <li>
+                            <!-- UPDATED CLASS: tf-nc replaced with node -->
+                            <span class="node {{ 'found-node' if highlight_val == node.key else '' }}">
+                                {{ node.key }}
+                        </span>
+                            {% if node.left or node.right %}
+                            <ul>
+                                {% if node.left %}
+                                    {{ render_node(node.left) }}
+                                {% else %}
+                                    <li><span style="width: 50px;"></span></li>
+                                {% endif %}
+                                
+                                {% if node.right %}
+                                    {{ render_node(node.right) }}
+                                {% else %}
+                                    <li><span style="width: 50px;"></span></li>
+                                {% endif %}
+                            </ul>
+                            {% endif %}
+                        </li>
+                        {% endif %}
+                    {% endmacro %}
+
+                    {% if root %}
+                        {{ render_node(root) }}
+                    {% else %}
+                        <p style="text-align:center; width:100%; padding-top:50px;">Tree is empty</p>
+                    
+                    {% endif %}
+                </ul>
+            </div>
+        </div>    
+
+        <form method="POST" action="{{ url_for('bst_page') }}" class="controls">
+            <input type="text" id="element-input" name="value" placeholder="Enter value">
+            
+            <button class="tree-btn" type="submit" name="action" value="insert">Insert Node</button>
+            <button class="tree-btn" type="submit" name="action" value="delete">Delete Node</button>
+            <button class="tree-btn" type="submit" name="action" value="search">Search Node</button>
+            <button class="tree-btn" type="submit" name="action" value="height">Find Height</button>
+            <button class="tree-btn" type="submit" name="action" value="max">Max Value</button>
+        </form>
+</body>     
+</html>
