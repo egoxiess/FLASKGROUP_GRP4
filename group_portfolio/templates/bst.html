@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Binary Search Tree</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tree.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+    
+<body style="background-color: #772244;">
+    <div class="tree-container">  
+        <h1 class="tree-title">Binary Search Tree</h1> 
+        
+        <div class="back-button-container">
+            <a href="/works"><button class="button2">← Back</button></a>
+        </div> 
+        
+        <div class="tree-body-container">
+            <div class="tree" id="tree-wrapper">
+                </div>
+        </div>    
+
+        <script>
+            var rawTreeData = '{{ tree_data | tojson | safe }}';
+            var rawHighlightVal = '{{ highlight_val | tojson | safe }}';
+            const treeData = JSON.parse(rawTreeData);
+            const highlightVal = JSON.parse(rawHighlightVal);
+        </script>
+        
+        <script src="{{ url_for('static', filename='treerender.js') }}"></script>    
+
+        <form method="POST" action="{{ url_for('bst_page') }}" class="controls">
+            <input type="text" id="element-input" name="value" placeholder="Enter value">
+            
+            <button class="tree-btn" type="submit" name="action" value="insert">Insert Node</button>
+            <button class="tree-btn" type="submit" name="action" value="delete">Delete Node</button>
+            <button class="tree-btn" type="submit" name="action" value="search">Search Node</button>
+            <button class="tree-btn" type="submit" name="action" value="max">Get Max Value</button>
+            <button class="tree-btn" type="submit" name="action" value="height">Find Height</button>
+        </form>
+
+        {% if message %}
+        <div style="text-align: center; margin-top: 20px; font-family: monospace; font-size: 16px;">
+            {{ message }}
+        </div>
+        {% endif %}
+
+        <div style="text-align: center; margin-top: 20px; font-family: monospace; font-size: 16px;">
+            <strong>Post Order Traversal:</strong> {{ elements }}
+        </div>
+    </div>
+</body>     
+</html>
