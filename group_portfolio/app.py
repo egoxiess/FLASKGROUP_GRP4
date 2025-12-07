@@ -107,13 +107,13 @@ def binary_tree_page():
                 message = "Input must be an integer."
 
     elements = tree.post_traversal(tree.root, [])
-    
-    print(f"DEBUG: binary_tree rendering highlight_val={highlight_val}")
+    tree_data = tree_to_dict(tree.root) 
+
     return render_template("binary_tree.html", 
-                           root=tree.root,
+                           tree_data=tree_data,
+                           highlight_val=highlight_val,
                            elements=elements, 
-                           message=message,
-                           highlight_val=highlight_val)
+                           message=message)
 
 @app.route("/bst", methods=["GET", "POST"])
 def bst_page():
@@ -163,4 +163,5 @@ def bst_page():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
