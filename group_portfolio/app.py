@@ -44,6 +44,7 @@ def queue_page():
     if request.method == "POST":
         action = request.form.get("action")
         value = request.form.get("value")
+        print(f"DEBUG: Received POST action={action!r}, value={value!r}")
 
         if action == "enqueue" and value:
             queue.enqueue(value)
