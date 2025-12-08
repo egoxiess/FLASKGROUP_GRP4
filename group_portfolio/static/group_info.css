@@ -1,57 +1,146 @@
 @font-face {
+
   font-family: 'LeagueGothic';
+
   src: url('/static/LeagueGothic-CondensedRegular.otf') format('opentype');
+
   font-weight: normal;
+
   font-style: normal;
+
   font-display: swap;
+
 }
+
+
 
 body {
+
   font-family: 'LeagueGothic', Arial, sans-serif;
+
   margin: 0;
+
   padding: 0;
+
   background: #f8f9fa;
+
 }
+
 .header {
+
   background: #343a40;
+
   color: #fff;
+
   padding: 12px;
+
 }
+
+
 
 .groupinfo-page {
+
   margin-top: 50px;
+
   margin-left: 5px;
+
   align-items: center;
+
   min-height: 100vh;
+
   text-align: center;
+
   z-index: 10;
+
 }
+
+
 
 .groupinfo-page .groupinfo_title {
+
   font-family: 'Home', Arial, sans-serif;
+
   color: #ee9955;
+
   text-align: right;
+
   font-size: 60pt;
+
   letter-spacing: 5px;
+
   margin: 0;
+
 }
+
+
 
 .groupinfo-page .groupinfo_text {
+
   font-family: 'Navigation', Arial, sans-serif;
+
   color: #333;
+
   text-align: right;
+
   letter-spacing: 5px;
+
   margin-top: 20px;
+
 }
 
+
+
 .groupinfo-page .groupmembers {
+
   display: flex;
+
   justify-content: center;
+
   align-items: center;
+
   gap: 25px;
+
   flex-wrap: wrap;
+
   margin-top: 30px;
+
   margin-bottom: 30px;
+
+}
+
+
+.groupinfo-page .description .names {
+
+ font-family: 'Home', Arial, sans-serif;
+
+ color: #ee9955;
+
+ text-align: right;
+
+ letter-spacing: 5px;
+
+ margin: 15px;
+
+}
+
+
+
+.groupinfo-page h2 {
+
+   color: #332244;
+
+  text-shadow:
+
+     -2px -1px 0 black,
+
+      1px -1px 0 black,
+
+     -1px  1px 0 black,
+
+      1px  2px 0 black;
+
+
+
 }
 
 .groupinfo-page .member {
@@ -59,30 +148,69 @@ body {
   overflow: hidden;
   cursor: pointer;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  position: relative; 
+  width: 350px; 
 }
 
+.groupinfo-page .member:hover {
+  filter: none;
+  transform: scale(1.05); 
+}
+
+.groupinfo-page .member:hover img {
+    filter: blur(3px) brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+/* 3. Image Styling */
 .groupinfo-page .member img {
-  margin: 10px;
-  height: 200px;
-  weight: 200px;
+  margin: 10px auto; 
+  height: 240px;
+  width: 240px; 
   border-radius: 50%;
+  display: block; 
+}
+
+.groupinfo-page .member .overlay {
+  position: absolute; 
+  top: 0;
+  bottom: 0; 
+  left: 0;
+  right: 0; 
+  width: 100%;
+  height: 100%;
+  z-index: 10; 
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
   
+  opacity: 0; 
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: opacity 0.4s ease;
+}
+
+
+.groupinfo-page .member:hover .overlay {
+  opacity: 1;
+}
+
+.groupinfo-page .member .overlay a i {
+  color: white; 
+  font-size: 30px; 
+  margin: 0 15px;
+  text-decoration: none; 
+}
+
+.groupinfo-page .member .overlay a:hover i {
+  color: #ee9955; 
 }
 
 .groupinfo-page .description .names {
- font-family: 'Home', Arial, sans-serif;
- color: #ee9955;
- text-align: right;
- letter-spacing: 5px;
- margin: 15px;
-}
-
-.groupinfo-page h2 {
-   color: #332244;
-  text-shadow:
-     -2px -1px 0 black,
-      1px -1px 0 black,
-     -1px  1px 0 black,
-      1px  2px 0 black;
-
+ font-family: 'Home', Arial, sans-serif;
+ color: #ee9955;
+ text-align: center; 
+ letter-spacing: 5px;
+ margin: 15px;
+ filter: none;
 }

@@ -1,14 +1,13 @@
+import json
 from flask import Flask, render_template, request
 from queue_deque import Queue, Deque
 from bst import BinarySearchTree
-from binary_tree import BinaryTree
 
 app = Flask(__name__)
 
 queue = Queue()
 deque = Deque()
 bst = BinarySearchTree()
-tree = BinaryTree()
 
 def get_inorder_elements(root):
     elements = []
@@ -82,48 +81,6 @@ def deque_page():
                            elements=deque.display(),
                            message=message)
 
-@app.route("/binary_tree", methods=["GET", "POST"])
-def binary_tree_page():
-    message = ""
-    highlight_val = None
-    if request.method == "POST":
-        action = request.form.get("action")
-        value = request.form.get("value")
-        print(f"DEBUG: binary_tree POST action={action!r}, value={value!r}")
-
-        if value:
-            try:
-                val_int = int(value)
-
-                if action == "insert":
-                    tree.root = tree.insert(tree.root, val_int)
-                    message = f"Inserted: {val_int}"
-
-                elif action == "delete":
-                    tree.root = tree.delete_node(tree.root, val_int)
-                    message = f"Deleted: {val_int}"
-
-                elif action == "search":
-                    result = tree.search(tree.root, val_int)
-                    if result:
-                        message = f"Found node: {result.key}"
-                        highlight_val = val_int
-                        print(f"DEBUG: binary_tree set highlight_val={highlight_val}")
-                    else:
-                        message = f"Node {val_int} not found."
-
-            except ValueError:
-                message = "Input must be an integer."
-
-    elements = tree.post_traversal(tree.root, [])
-    tree_data = tree_to_dict(tree.root) 
-
-    return render_template("binary_tree.html", 
-                           tree_data=tree_data,
-                           highlight_val=highlight_val,
-                           elements=elements, 
-                           message=message)
-
 @app.route("/bst", methods=["GET", "POST"])
 def bst_page():
     message = ""
@@ -172,6 +129,3 @@ def bst_page():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
