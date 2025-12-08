@@ -1,12 +1,15 @@
 import json
 from flask import Flask, render_template, request
 from queue_deque import Queue, Deque
+from binary_tree import BinaryTree
 from bst import BinarySearchTree
+
 
 app = Flask(__name__)
 
 queue = Queue()
 deque = Deque()
+tree = BinaryTree()
 bst = BinarySearchTree()
 
 def get_inorder_elements(root):
@@ -80,6 +83,48 @@ def deque_page():
     return render_template("deque.html",
                            elements=deque.display(),
                            message=message)
+
+@app.route("/binary_tree", methods=["GET", "POST"])
+def binary_tree_page():
+    message = ""
+    action = None
+    val_int = None
+    if request.method == "POST":
+        action = request.form.get("action")
+        value = request.form.get("value")
+
+        if value:
+            try:
+                val_int = int(value)
+                
+                if action == "insert":
+                    tree.root = tree.insert(tree.root, val_int)
+                    message = f"Inserted: {val_int}"
+                
+                elif action == "delete":
+                    tree.root = tree.delete_node(tree.root, val_int)
+                    message = f"Deleted: {val_int}"
+                
+                elif action == "search":
+                    result = tree.search(tree.root, val_int)
+                    if result:
+                        message = f"Found node: {result.key}"
+                    else:
+                        message = f"Node {val_int} not found."
+                        
+            except ValueError:
+                message = "Input must be an integer."
+
+    elements = tree.post_traversal(tree.root, [])
+    tree_data = tree_to_dict(tree.root)
+    highlight_val = val_int if (action == "search" and "Found" in message) else None
+    
+    return render_template("binary_tree.html", 
+                           elements=elements, 
+                           message=message,
+                           tree_data=tree_data,
+                           highlight_val=highlight_val)
+
 
 @app.route("/bst", methods=["GET", "POST"])
 def bst_page():
