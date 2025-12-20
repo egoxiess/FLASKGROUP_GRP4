@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 from queue_deque import Queue, Deque
 from binary_tree import BinaryTree
 from bst import BinarySearchTree
-
+from collections import deque as PythonDeque
 
 app = Flask(__name__)
 
@@ -11,23 +11,6 @@ queue = Queue()
 deque = Deque()
 tree = BinaryTree()
 bst = BinarySearchTree()
-
-def get_inorder_elements(root):
-    elements = []
-    if root:
-        elements = get_inorder_elements(root.left)
-        elements.append(root.key)
-        elements = elements + get_inorder_elements(root.right)
-    return elements
-
-def tree_to_dict(node):
-    if node is None:
-        return None
-    return {
-        "key": node.key,
-        "left": tree_to_dict(node.left),
-        "right": tree_to_dict(node.right)
-    }
 
 @app.route("/")
 def index():
@@ -171,10 +154,114 @@ def bst_page():
                            elements=get_inorder_elements(bst.root), 
                            message=message,
                            highlight_val=highlight_val)
-                           
-@app.route("/graph")
-def graph_page():
-    return render_template("graph-train.html")
+
+@app.route("/graph-train", methods=["GET", "POST"])
+def bfs_page():
+    path = None
+    error = None
+    start = None
+    goal = None
+    
+    if request.method == "POST":
+        start = request.form.get("start")
+        goal = request.form.get("goal")
+        
+        if start and goal:
+            path = mrt.bfs_shortest_path(start, goal)
+            if not path:
+                error = "No path found."
+        else:
+            error = "Please select both stations."
+
+    return render_template("graph-train.html", 
+                           stations=stations, 
+                           path=path, 
+                           error=error,
+                           start=start,
+                           goal=goal)
+
+
+class MRTGraph:
+    def __init__(self):
+        self.graph = {}
+
+    def add_station(self, station):
+        if station not in self.graph:
+            self.graph[station] = []
+
+    def add_connection(self, station1, station2):
+        self.graph[station1].append(station2)
+        self.graph[station2].append(station1)
+
+    def bfs_shortest_path(self, start, goal):
+        queue = PythonDeque([[start]])
+        visited = set()
+
+        while queue:
+            path = queue.popleft()
+            station = path[-1]
+
+            if station == goal:
+                return path
+
+            if station not in visited:
+                visited.add(station)
+
+                for neighbor in self.graph.get(station, []):
+                    new_path = list(path)
+                    new_path.append(neighbor)
+                    queue.append(new_path)
+
+        return None
+
+mrt = MRTGraph()
+
+stations = [
+    "North Avenue", "Quezon Avenue", "GMA Kamuning", "Cubao",
+    "Santolan", "Ortigas", "Shaw Boulevard", "Boni",
+    "Guadalupe", "Buendia", "Ayala", "Magallanes",
+    "Taft Avenue"
+]
+
+for station in stations:
+    mrt.add_station(station)
+
+connections = [
+    ("North Avenue", "Quezon Avenue"),
+    ("Quezon Avenue", "GMA Kamuning"),
+    ("GMA Kamuning", "Cubao"),
+    ("Cubao", "Santolan"),
+    ("Cubao", "Ortigas"),
+    ("Ortigas", "Shaw Boulevard"),
+    ("Shaw Boulevard", "Boni"),
+    ("Boni", "Guadalupe"),
+    ("Guadalupe", "Buendia"),
+    ("Buendia", "Ayala"),
+    ("Ayala", "Magallanes"),
+    ("Magallanes", "Taft Avenue")
+]
+
+for s1, s2 in connections:
+    mrt.add_connection(s1, s2)
+
+def get_inorder_elements(root):
+    elements = []
+    if root:
+        elements = get_inorder_elements(root.left)
+        elements.append(root.key)
+        elements = elements + get_inorder_elements(root.right)
+    return elements
+
+def tree_to_dict(node):
+    if node is None:
+        return None
+    return {
+        "key": node.key,
+        "left": tree_to_dict(node.left),
+        "right": tree_to_dict(node.right)
+    }
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
