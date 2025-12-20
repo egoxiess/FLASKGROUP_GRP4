@@ -155,7 +155,7 @@ def bst_page():
                            message=message,
                            highlight_val=highlight_val)
 
-@app.route("/bfs", methods=["GET", "POST"])
+@app.route("/graph-train", methods=["GET", "POST"])
 def bfs_page():
     path = None
     visited_order = None
@@ -251,3 +251,4 @@ train.add_connection("Doroteo Jose", "Recto")
 
 if __name__ == "__main__":
     app.run(debug=True)
+
