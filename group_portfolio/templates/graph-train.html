@@ -28,12 +28,13 @@
         <div class="legend-item"><span class="legend-line mrt3"></span><span class="legend-text">MRT 3</span></div>
       </div>
 
+      <!--Fare-->
       <div id="fare-container">
           <span class="fare-label">Fare</span>
           <span id="fare-amount">₱ 0</span>
       </div>
 
-      <!-- SVG Map -->
+       <!-- SVG Map -->
       <svg class="rail-svg" viewBox="0 0 680 700">
         <!-- LRT 1 Yellow Line -->
         <line class="line lrt1-line" x1="160" y1="5" x2="300" y2="5" />
@@ -67,148 +68,192 @@
         <line class="line mrt3-line" x1="410" y1="135" x2="410" y2="235" />
         <line class="line mrt3-line" x1="410" y1="235" x2="250" y2="505" />
         <line class="line mrt3-line" x1="250" y1="505" x2="220" y2="505" />
-        
+
         <!-- LRT 1 Stations -->
         <g class="station-group">
+
           <circle id="station-Fernando Poe Jr." class="station lrt1-station" cx="300" cy="5" r="4" />
           <text class="station-label bottom" x="310" y="17">Fernando Poe Jr.</text>
-          
+
           <circle id="station-Balintawak" class="station lrt1-station" cx="220" cy="5" r="4" />
           <text class="station-label bottom" x="220" y="17">Balintawak</text>
-          
+
           <circle id="station-Monumento" class="station lrt1-station" cx="150" cy="10" r="4" />
           <text class="station-label left" x="140" y="13">Monumento</text>
-          
+
           <circle id="station-5th Avenue" class="station lrt1-station" cx="150" cy="35" r="4" />
           <text class="station-label left" x="140" y="38">5th Avenue</text>
-          
+
           <circle id="station-R. Papa" class="station lrt1-station" cx="137" cy="53" r="4" />
           <text class="station-label right" x="150" y="60">R. Papa</text>
-          
+
           <circle id="station-Abad Santos" class="station lrt1-station" cx="139" cy="93" r="4" />
           <text class="station-label rightt" x="150" y="93">Abad Santos</text>
-          
+
           <circle id="station-Blumentritt" class="station lrt1-station" cx="150" cy="110" r="4" />
           <text class="station-label left" x="140" y="113">Blumentritt</text>
-          
+
           <circle id="station-Tayuman" class="station lrt1-station" cx="150" cy="135" r="4" />
           <text class="station-label left" x="140" y="138">Tayuman</text>
-          
+
           <circle id="station-Bambang" class="station lrt1-station" cx="150" cy="155" r="4" />
           <text class="station-label left" x="140" y="158">Bambang</text>
-          
+
           <circle id="station-Doroteo Jose" class="station interchange" cx="150" cy="170" r="5" />
           <text class="station-label left" x="140" y="173">Doroteo Jose</text>
-          
+
           <circle id="station-Carriedo" class="station lrt1-station" cx="150" cy="200" r="4" />
           <text class="station-label left" x="140" y="203">Carriedo</text>
-          
+
           <circle id="station-Central Terminal" class="station lrt1-station" cx="150" cy="230" r="4" />
-          <text class="station-label left" x="140" y="233">Central Terminal</text>
-          
+          <text class="station-label left" x="140" y="233">Central Station</text>
+
           <circle id="station-United Nations" class="station lrt1-station" cx="150" cy="260" r="4" />
           <text class="station-label left" x="140" y="263">United Nations</text>
-          
+
           <circle id="station-Pedro Gil" class="station lrt1-station" cx="167" cy="300" r="4" />
           <text class="station-label left" x="157" y="305">Pedro Gil</text>
-          
+
           <circle id="station-Quirino" class="station lrt1-station" cx="189" cy="340" r="4" />
           <text class="station-label left" x="179" y="345">Quirino</text>
-          
+
           <circle id="station-Vito Cruz" class="station lrt1-station" cx="200" cy="385" r="4" />
           <text class="station-label left" x="190" y="388">Vito Cruz</text>
-          
+
           <circle id="station-Gil Puyat" class="station lrt1-station" cx="200" cy="442" r="4" />
           <text class="station-label left" x="190" y="445">Gil Puyat</text>
-          
+
           <circle id="station-Libertad" class="station lrt1-station" cx="200" cy="480" r="4" />
           <text class="station-label left" x="190" y="484">Libertad</text>
-          
+
           <circle id="station-EDSA" class="station interchange" cx="200" cy="505" r="5" />
           <text class="station-label left" x="190" y="510">EDSA</text>
-          
+
           <circle id="station-Baclaran" class="station lrt1-station" cx="185" cy="531" r="4" />
           <text class="station-label right" x="195" y="540">Baclaran</text>
+          
+          <circle id="station-Redemptorist-Aseana" class="station lrt1-station" cx="150" cy="545" r="4" />
+          <text class="station-label left" x="140" y="543">Redemptorist-</text>
+          <text class="station-label left" x="140" y="553">Aseana</text>
+          
+          <circle id="station-MIA Road" class="station lrt1-station" cx="150" cy="590" r="4" />
+          <text class="station-label left" x="140" y="594">MIA Road</text>
+          
+          <circle id="station-PITX" class="station lrt1-station" cx="150" cy="615" r="4" />
+          <text class="station-label left" x="140" y="620">PITX</text>
+          
+          <circle id="station-Ninoy Aquino Avenue" class="station lrt1-station" cx="160" cy="660" r="4" />
+          <text class="station-label left" x="150" y="658">Ninoy Aquino</text>
+          <text class="station-label left" x="150" y="668">Avenue</text>
+          
+          <circle id="station-Dr. Santos" class="station lrt1-station" cx="160" cy="690" r="4" />
+          <text class="station-label right" x="170" y="695">Dr. Santos</text>
+        </g>
 
-          <!-- LRT 2 Stations -->
+        <!-- LRT 2 Stations -->
+        <g class="station-group">
+
           <circle id="station-Recto" class="station lrt2-station" cx="169" cy="185" r="4" />
           <text class="station-label top" x="180" y="175" stroke="#9530FF" stroke-width="1">Recto</text>
-          
+
           <circle id="station-Legarda" class="station lrt2-station" cx="210" cy="185" r="4" />
           <text class="station-label bottom" x="212" y="195" stroke="#9530FF" stroke-width="1">Legarda</text>
-          
+
           <circle id="station-Pureza" class="station lrt2-station" cx="250" cy="185" r="4" />
           <text class="station-label top" x="250" y="175" stroke="#9530FF" stroke-width="1">Pureza</text>
-          
+
           <circle id="station-V. Mapa" class="station lrt2-station" cx="285" cy="185" r="4" />
           <text class="station-label botttom" x="267" y="203" stroke="#9530FF" stroke-width="1">V. Mapa</text>
           
           <circle id="station-J. Ruiz" class="station lrt2-station" cx="320" cy="182" r="4" />
           <text class="station-label bottom" x="340" y="192" stroke="#9530FF" stroke-width="1">J. Ruiz</text>
-          
+
+          <circle id="station-Betty Go-Belmonte" class="station lrt2-station" cx="382" cy="145" r="4" />  
+          <text class="station-label top" x="322" y="145" stroke="#9530FF" stroke-width="1">Betty Go Belmonte</text>
+
+          <circle id="Araneta Center" class="station interchange" cx="420" cy="135" r="5" />
+          <text class="station-label right" x="421" y="155">Araneta Center-</text>
+          <text class="station-label right" x="421" y="165">Cubao</text>
+
           <circle id="station-Gilmore" class="station lrt2-station" cx="353" cy="162" r="4" />
           <text class="station-label top" x="323" y="162" stroke="#9530FF" stroke-width="1">Gilmore</text>
-          
-          <circle id="station-Betty Go-Belmonte" class="station lrt2-station" cx="382" cy="145" r="4" />
-          <text class="station-label top" x="322" y="145" stroke="#9530FF" stroke-width="1">Betty Go-Belmonte</text>
-          
+
           <circle id="station-Anonas" class="station lrt2-station" cx="461" cy="135" r="4" />
           <text class="station-label top" x="462" y="125" stroke="#9530FF" stroke-width="1">Anonas</text>
-          
+
           <circle id="station-Katipunan" class="station lrt2-station" cx="502" cy="135" r="4" />
           <text class="station-label top" x="525" y="125" stroke="#9530FF">Katipunan</text>
           
           <circle id="station-Araneta Cubao" class="station interchange" cx="420" cy="135" r="5" />
-          <text class="station-label right" x="421" y="155">Araneta Cubao</text>
+          <text class="station-label right" x="421" y="155">Araneta Center-</text>
+          <text class="station-label right" x="421" y="165">Cubao</text>
           
+          <line x1="421" y1="168" x2="453" y2="168" stroke="#0066CC" stroke-width="1" />
+          <line x1="421" y1="170" x2="453" y2="170" stroke="#9B30FF" stroke-width="1" />
+
           <circle id="station-Santolan" class="station lrt2-station" cx="528" cy="160" r="4" />
           <text class="station-label right" x="538" y="158" stroke="#9530FF" stroke-width="1">Santolan</text>
-          
+
           <circle id="station-Marikina-Pasig" class="station lrt2-station" cx="575" cy="170" r='4' />
           <text class="station-label bottom" x="578" y="180" stroke="#9530FF" stroke-width="1">Marikina-Pasig</text>
-          
+
           <circle id="station-Antipolo" class="station lrt2-station" cx="650" cy="170" r='4' />
           <text class="station-label top" x="650" y="160" stroke="#9530FF" stroke-width="1">Antipolo</text>
+        </g>
 
-          <!-- MRT 3 Stations -->
+        <!-- MRT 3 Stations -->
+        <g class="station-group">
+
           <circle id="station-North Avenue" class="station mrt3-station" cx="369" cy="30" r="4" />
           <text class="station-label right" x="380" y="33" stroke="#0066CC" stroke-width="1">North Avenue</text>
-          
+
           <circle id="station-Quezon Avenue" class="station mrt3-station" cx="385" cy="70" r="4" />
           <text class="station-label right" x="395" y="73" stroke="#0066CC">Quezon Avenue</text>
           
           <circle id="station-GMA Kamuning" class="station mrt3-station" cx="400" cy="110" r="4" />
-          <text class="station-label right" x="408" y="108" stroke="#0066CC">GMA Kamuning</text>
+          <text class="station-label right" x="408" y="108" stroke="#0066CC">GMA-Kamuning</text>
           
+          <circle class="station interchange" cx="410" cy="143" r="4" />
+
+          <circle class="station mrt3-station" cx="410" cy="185" r="4" />
           <circle id="station-Santolan-Annapolis" class="station mrt3-station" cx="410" cy="185" r="4" />
-          <text class="station-label right" x="420" y="183" stroke="#0066CC">Santolan-Annapolis</text>
+          <text class="station-label right" x="420" y="183" stroke="#0066CC">Santolan-</text>
+          <text class="station-label right" x="420" y="193" stroke="#0066CC">Anapolis</text>
           
+          <circle class="station mrt3-station" cx="410" cy="228" r="4" />
           <circle id="station-Ortigas" class="station mrt3-station" cx="410" cy="228" r="4" />
-          <text class="station-label right" x="420" y="232" stroke="#0066CC">Ortigas</text>
+          <text class="station-label right" x="420" y="232" stroke="#0066CC">Ortigas Avenue</text>
           
+          <circle class="station mrt3-station" cx="389" cy="270" r="4" />
           <circle id="station-Shaw Boulevard" class="station mrt3-station" cx="389" cy="270" r="4" />
           <text class="station-label right" x="399" y="275" stroke="#0066CC">Shaw Boulevard</text>
           
+          <circle class="station mrt3-station" cx="363" cy="315" r="4" />
           <circle id="station-Boni" class="station mrt3-station" cx="363" cy="315" r="4" />
           <text class="station-label right" x="373" y="320" stroke="#0066CC">Boni Avenue</text>
           
+          <circle class="station mrt3-station" cx="336" cy="360" r="4" />
           <circle id="station-Guadalupe" class="station mrt3-station" cx="336" cy="360" r="4" />
           <text class="station-label right" x="346" y="365" stroke="#0066CC">Guadalupe</text>
           
+          <circle class="station mrt3-station" cx="312" cy="400" r="4" />
           <circle id="station-Buendia" class="station mrt3-station" cx="312" cy="400" r="4" />
           <text class="station-label right" x="322" y="403" stroke="#0066CC">Buendia</text>
           
+          <circle class="station mrt3-station" cx="287" cy="442" r="4" />
           <circle id="station-Ayala" class="station mrt3-station" cx="287" cy="442" r="4" />
           <text class="station-label right" x="297" y="447" stroke="#0066CC">Ayala</text>
           
+          <circle class="station mrt3-station" cx="265" cy="480" r="4" />
           <circle id="station-Magallanes" class="station mrt3-station" cx="265" cy="480" r="4" />
           <text class="station-label right" x="275" y="485" stroke="#0066CC">Magallanes</text>
           
+          <circle class="station mrt3-station" cx="220" cy="505" r="4" />
           <circle id="station-Taft Avenue" class="station mrt3-station" cx="220" cy="505" r="4" />
           <text class="station-label bottom" x="248" y="515" stroke="#0066CC">Taft Avenue</text>
         </g>
       </svg>
-    </div>
+    </div>  
     
     <form action="/bfs" method="POST" class="router-selector">
       <div class="selector-row">
@@ -245,7 +290,13 @@
               <option value="Libertad">Libertad</option>
               <option value="EDSA">EDSA</option>
               <option value="Baclaran">Baclaran</option>
+              <option value="Redemptorist-Aseana">Redemptorist-Aseana</option>
+              <option value="MIA Road">MIA Road</option>
+              <option value="PITX">PITX</option>
+              <option value="Ninoy Aquino Avenue">Ninoy Aquino Avenue</option>
+              <option value="Dr. Santos">Dr. Santos</option>
             </optgroup>
+
             <optgroup label="LRT Line 2">
               <option value="Recto">Recto</option>
               <option value="Legarda">Legarda</option>
@@ -254,18 +305,19 @@
               <option value="J. Ruiz">J. Ruiz</option>
               <option value="Gilmore">Gilmore</option>
               <option value="Betty Go-Belmonte">Betty Go-Belmonte</option>
-              <option value="Araneta Cubao">Araneta Cubao</option>
+              <option value="Araneta Cubao">Araneta Center-Cubao</option>
               <option value="Anonas">Anonas</option>
               <option value="Katipunan">Katipunan</option>
               <option value="Santolan">Santolan</option>
               <option value="Marikina-Pasig">Marikina-Pasig</option>
               <option value="Antipolo">Antipolo</option>
             </optgroup>
+
             <optgroup label="MRT Line 3">
               <option value="North Avenue">North Avenue</option>
               <option value="Quezon Avenue">Quezon Avenue</option>
               <option value="GMA Kamuning">GMA Kamuning</option>
-              <option value="Araneta Cubao">Araneta Cubao</option>
+              <option value="Araneta Cubao">Araneta Center-Cubao</option>
               <option value="Santolan-Annapolis">Santolan-Annapolis</option>
               <option value="Ortigas">Ortigas</option>
               <option value="Shaw Boulevard">Shaw Boulevard</option>
@@ -277,6 +329,7 @@
               <option value="Taft Avenue">Taft Avenue</option>
             </optgroup>
           </select>
+
         </div>
         
         <div class="selector-group">
@@ -312,7 +365,13 @@
               <option value="Libertad">Libertad</option>
               <option value="EDSA">EDSA</option>
               <option value="Baclaran">Baclaran</option>
+              <option value="Redemptorist-Aseana">Redemptorist-Aseana</option>
+              <option value="MIA Road">MIA Road</option>
+              <option value="PITX">PITX</option>
+              <option value="Ninoy Aquino Avenue">Ninoy Aquino Avenue</option>
+              <option value="Dr. Santos">Dr. Santos</option>
             </optgroup>
+
             <optgroup label="LRT Line 2">
               <option value="Recto">Recto</option>
               <option value="Legarda">Legarda</option>
@@ -321,18 +380,19 @@
               <option value="J. Ruiz">J. Ruiz</option>
               <option value="Gilmore">Gilmore</option>
               <option value="Betty Go-Belmonte">Betty Go-Belmonte</option>
-              <option value="Araneta Cubao">Araneta Cubao</option>
+              <option value="Araneta Cubao">Araneta Center-Cubao</option>
               <option value="Anonas">Anonas</option>
               <option value="Katipunan">Katipunan</option>
               <option value="Santolan">Santolan</option>
               <option value="Marikina-Pasig">Marikina-Pasig</option>
               <option value="Antipolo">Antipolo</option>
             </optgroup>
+
             <optgroup label="MRT Line 3">
               <option value="North Avenue">North Avenue</option>
               <option value="Quezon Avenue">Quezon Avenue</option>
               <option value="GMA Kamuning">GMA Kamuning</option>
-              <option value="Araneta Cubao">Araneta Cubao</option>
+              <option value="Araneta Cubao">Araneta Center-Cubao</option>
               <option value="Santolan-Annapolis">Santolan-Annapolis</option>
               <option value="Ortigas">Ortigas</option>
               <option value="Shaw Boulevard">Shaw Boulevard</option>
