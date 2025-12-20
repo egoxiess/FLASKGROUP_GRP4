@@ -12,6 +12,23 @@ deque = Deque()
 tree = BinaryTree()
 bst = BinarySearchTree()
 
+def get_inorder_elements(root):
+    elements = []
+    if root:
+        elements = get_inorder_elements(root.left)
+        elements.append(root.key)
+        elements = elements + get_inorder_elements(root.right)
+    return elements
+
+def tree_to_dict(node):
+    if node is None:
+        return None
+    return {
+        "key": node.key,
+        "left": tree_to_dict(node.left),
+        "right": tree_to_dict(node.right)
+    }
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -251,4 +268,5 @@ train.add_connection("Doroteo Jose", "Recto")
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
