@@ -296,14 +296,12 @@
 }
 
 .calculate-btn {
-  min-width: 300px;        /* Forces the button to be at least 300px wide */
-  height: 60px;            /* Forces a specific height */
+  min-width: 300px;       
+  height: 60px;           
   font-size: 20px;
-  padding: 15px 40px;      /* Increased from 10px 20px */
-  font-size: 22px;         /* Makes the text larger */
-  font-weight: bold;       /* Makes it stand out more */
-  
-  /* If you want it to feel "heavier" */
+  padding: 15px 40px;      
+  font-size: 22px;        
+  font-weight: bold;       
   border-width: 3px;
   cursor: pointer;
   background-color: #eedd88;
