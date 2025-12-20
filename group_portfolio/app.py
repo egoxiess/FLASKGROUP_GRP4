@@ -171,6 +171,10 @@ def bst_page():
                            elements=get_inorder_elements(bst.root), 
                            message=message,
                            highlight_val=highlight_val)
+                           
+@app.route("/graph")
+def graph_page():
+    return render_template("graph-train.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
