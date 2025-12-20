@@ -245,7 +245,8 @@ lrt1 = [
     "R. Papa", "Abad Santos", "Blumentritt", "Tayuman",
     "Bambang", "Doroteo Jose", "Carriedo", "Central Terminal",
     "United Nations", "Pedro Gil", "Quirino", "Vito Cruz",
-    "Gil Puyat", "Libertad", "EDSA", "Baclaran"
+    "Gil Puyat", "Libertad", "EDSA", "Baclaran","Redemptorist-Aseana",
+    "MIA Road", "PITX", "Ninoy Aquino Avenue", "Dr. Santos"
 ]
 
 lrt2 = [
@@ -268,5 +269,6 @@ train.add_connection("Doroteo Jose", "Recto")
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
