@@ -1,0 +1,320 @@
+.graph-container {
+  max-width: 1000px;
+  position: relative;
+  top: 40px;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: #FFFFF0;
+  border: 3px solid #332244;
+  border-radius: 15px;
+}
+
+.graph-title {
+  font-family: 'Home', Arial, sans-serif;
+  color: #ee9955;
+  text-align: center;
+  font-size: 40pt;
+  letter-spacing: 5px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.back-button-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.graph-body-container {
+  background-color: #fff;
+  border: 2px solid #332244;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  min-height: 150px;
+  position: relative;
+}
+
+.graph-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Train Map Styles */
+.legend {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border: 2px solid #000;
+  padding: 15px;
+  background-color: #f5f5dc;
+  z-index: 10;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.legend-item:last-child {
+  margin-bottom: 0;
+}
+
+.legend-line {
+  width: 30px;
+  height: 4px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.legend-line.lrt1 {
+  background-color: #FFD700;
+}
+
+.legend-line.lrt2 {
+  background-color: #9B30FF;
+}
+
+.legend-line.mrt3 {
+  background-color: #0066CC;
+}
+
+.legend-text {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.rail-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Rail Lines */
+.line {
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lrt1-line {
+  stroke: #FFD700;
+}
+
+.lrt-junction {
+  stroke: #00AA00;
+}
+
+.lrt2-line {
+  stroke: #9B30FF;
+}
+
+.mrt3-line {
+  stroke: #0066CC;
+}
+
+/* Stations */
+.station {
+  fill: #fff;
+  stroke-width: 2;
+}
+
+.lrt1-station {
+  stroke: #FFD700;
+}
+
+.lrt2-station {
+  stroke: #9B30FF;
+}
+
+.mrt3-station {
+  stroke: #0066CC;
+}
+
+.interchange {
+  fill: #fff;
+  stroke: #00AA00;
+  stroke-width: 3;
+}
+
+.station.future {
+  fill: #fff;
+  stroke-dasharray: 3, 3;
+  opacity: 0.6;
+}
+
+/* Station Labels */
+.station-label {
+  font-size: 11px;
+  fill: #000;
+  font-family: Arial, sans-serif;
+}
+
+.station-label.left {
+  text-anchor: end;
+}
+
+.station-label.right {
+  text-anchor: start;
+}
+
+.station-label.top {
+  text-anchor: middle;
+  dominant-baseline: auto;
+}
+
+.station-label.bottom {
+  text-anchor: middle;
+  dominant-baseline: hanging;
+}
+
+.station-label.future-label {
+  fill: #666;
+  opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .legend {
+    right: 10px;
+    top: 10px;
+    padding: 10px;
+  }
+  
+  .station-label {
+    font-size: 9px;
+  }
+  
+  .legend-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .legend {
+    padding: 8px;
+  }
+  
+  .legend-line {
+    width: 20px;
+    height: 3px;
+  }
+  
+  .legend-text {
+    font-size: 10px;
+  }
+  
+  .station-label {
+    font-size: 8px;
+  }
+}
+
+/* Route Selector Styles */
+.route-selector {
+  background-color: #fff;
+  border: 2px solid #332244;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.selector-row {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.selector-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.selector-group label {
+  font-family: 'NormalFont', Arial, sans-serif;
+  font-size: 20px;
+  color: #332244;
+  font-weight: bold;
+}
+
+.line-select,
+.station-select {
+  padding: 8px 12px;
+  font-family: 'Navigation', Arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  border: 2px solid #332244;
+  border-radius: 5px;
+  background-color: #FFFFF0;
+  cursor: pointer;
+}
+
+.line-select {
+  min-width: 150px;
+}
+
+.station-select {
+  min-width: 200px;
+}
+
+.line-select:focus,
+.station-select:focus {
+  outline: none;
+  border-color: #ee9955;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .selector-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .selector-group {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .line-select,
+  .station-select {
+    width: 100%;
+  }
+}
+
+.calculate-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.calculate-btn {
+  min-width: 300px;        /* Forces the button to be at least 300px wide */
+  height: 60px;            /* Forces a specific height */
+  font-size: 20px;
+  padding: 15px 40px;      /* Increased from 10px 20px */
+  font-size: 22px;         /* Makes the text larger */
+  font-weight: bold;       /* Makes it stand out more */
+  
+  /* If you want it to feel "heavier" */
+  border-width: 3px;
+  cursor: pointer;
+  background-color: #eedd88;
+  border: 2px solid #332244;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-family: 'Navigation', Arial, sans-serif;
+  letter-spacing: 2px;
+  transition: background-color 0.3s;
+}
+
+.calculate-btn:hover {
+  background-color: #e06699;
+}
