@@ -44,7 +44,8 @@ lrt1 = [
     "R. Papa", "Abad Santos", "Blumentritt", "Tayuman",
     "Bambang", "Doroteo Jose", "Carriedo", "Central Terminal",
     "United Nations", "Pedro Gil", "Quirino", "Vito Cruz",
-    "Gil Puyat", "Libertad", "EDSA", "Baclaran"
+    "Gil Puyat", "Libertad", "EDSA", "Baclaran", "Redemptorist-Aseana",
+    "MIA Road", "PITX", "Ninoy Aquino Avenue", "Dr. Santos"
 ]
 
 lrt2 = [
@@ -65,4 +66,5 @@ for i in range(len(lrt1) - 1):
     train.add_connection(lrt1[i], lrt1[i + 1])
 
 for i in range(len(lrt2) - 1):
+
     train.add_connection(lrt2[i], lrt2[i + 1])
