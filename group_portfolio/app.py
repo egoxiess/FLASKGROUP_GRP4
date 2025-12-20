@@ -155,9 +155,10 @@ def bst_page():
                            message=message,
                            highlight_val=highlight_val)
 
-@app.route("/graph-train", methods=["GET", "POST"])
+@app.route("/bfs", methods=["GET", "POST"])
 def bfs_page():
     path = None
+    visited_order = None
     error = None
     start = None
     goal = None
@@ -167,21 +168,20 @@ def bfs_page():
         goal = request.form.get("goal")
         
         if start and goal:
-            path = mrt.bfs_shortest_path(start, goal)
+            path, visited_order = train.bfs_shortest_path(start, goal)
             if not path:
                 error = "No path found."
         else:
             error = "Please select both stations."
 
     return render_template("graph-train.html", 
-                           stations=stations, 
                            path=path, 
+                           visited_order=visited_order,
                            error=error,
                            start=start,
                            goal=goal)
 
-
-class MRTGraph:
+class TrainGraph:
     def __init__(self):
         self.graph = {}
 
@@ -189,79 +189,65 @@ class MRTGraph:
         if station not in self.graph:
             self.graph[station] = []
 
-    def add_connection(self, station1, station2):
-        self.graph[station1].append(station2)
-        self.graph[station2].append(station1)
+    def add_connection(self, s1, s2):
+        if s1 in self.graph and s2 in self.graph:
+            self.graph[s1].append(s2)
+            self.graph[s2].append(s1)
 
     def bfs_shortest_path(self, start, goal):
-        queue = PythonDeque([[start]])
+        queue = PythonDeque([(start, [start])])
         visited = set()
+        visited_order = []
 
         while queue:
-            path = queue.popleft()
-            station = path[-1]
+            (vertex, path) = queue.popleft()
 
-            if station == goal:
-                return path
+            if vertex not in visited:
+                visited.add(vertex)
+                visited_order.append(vertex)
 
-            if station not in visited:
-                visited.add(station)
+                if vertex == goal:
+                    return path, visited_order
 
-                for neighbor in self.graph.get(station, []):
-                    new_path = list(path)
-                    new_path.append(neighbor)
-                    queue.append(new_path)
+                for neighbor in self.graph.get(vertex, []):
+                    if neighbor not in visited:
+                        queue.append((neighbor, path + [neighbor]))
+        
+        return None, visited_order
 
-        return None
+train = TrainGraph()
 
-mrt = MRTGraph()
-
-stations = [
-    "North Avenue", "Quezon Avenue", "GMA Kamuning", "Cubao",
-    "Santolan", "Ortigas", "Shaw Boulevard", "Boni",
-    "Guadalupe", "Buendia", "Ayala", "Magallanes",
-    "Taft Avenue"
+mrt3 = [
+    "North Avenue", "Quezon Avenue", "GMA Kamuning", "Araneta Cubao",
+    "Santolan-Annapolis", "Ortigas", "Shaw Boulevard", "Boni",
+    "Guadalupe", "Buendia", "Ayala", "Magallanes", "Taft Avenue"
 ]
 
-for station in stations:
-    mrt.add_station(station)
-
-connections = [
-    ("North Avenue", "Quezon Avenue"),
-    ("Quezon Avenue", "GMA Kamuning"),
-    ("GMA Kamuning", "Cubao"),
-    ("Cubao", "Santolan"),
-    ("Cubao", "Ortigas"),
-    ("Ortigas", "Shaw Boulevard"),
-    ("Shaw Boulevard", "Boni"),
-    ("Boni", "Guadalupe"),
-    ("Guadalupe", "Buendia"),
-    ("Buendia", "Ayala"),
-    ("Ayala", "Magallanes"),
-    ("Magallanes", "Taft Avenue")
+lrt1 = [
+    "Fernando Poe Jr.", "Balintawak", "Monumento", "5th Avenue",
+    "R. Papa", "Abad Santos", "Blumentritt", "Tayuman",
+    "Bambang", "Doroteo Jose", "Carriedo", "Central Terminal",
+    "United Nations", "Pedro Gil", "Quirino", "Vito Cruz",
+    "Gil Puyat", "Libertad", "EDSA", "Baclaran"
 ]
 
-for s1, s2 in connections:
-    mrt.add_connection(s1, s2)
+lrt2 = [
+    "Recto", "Legarda", "Pureza", "V. Mapa",
+    "J. Ruiz", "Gilmore", "Betty Go-Belmonte",
+    "Araneta Cubao", "Anonas", "Katipunan",
+    "Santolan", "Marikina-Pasig", "Antipolo"
+]
 
-def get_inorder_elements(root):
-    elements = []
-    if root:
-        elements = get_inorder_elements(root.left)
-        elements.append(root.key)
-        elements = elements + get_inorder_elements(root.right)
-    return elements
+for line in [mrt3, lrt1, lrt2]:
+    for station in line:
+        train.add_station(station)
 
-def tree_to_dict(node):
-    if node is None:
-        return None
-    return {
-        "key": node.key,
-        "left": tree_to_dict(node.left),
-        "right": tree_to_dict(node.right)
-    }
+for line in [mrt3, lrt1, lrt2]:
+    for i in range(len(line) - 1):
+        train.add_connection(line[i], line[i + 1])
 
-
+train.add_connection("EDSA", "Taft Avenue")
+train.add_connection("Doroteo Jose", "Recto")
 
 if __name__ == "__main__":
     app.run(debug=True)
