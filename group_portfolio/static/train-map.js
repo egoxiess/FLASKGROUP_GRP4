@@ -215,10 +215,25 @@ function animatePath(finalPath) {
         }
 
         const stationName = finalPath[j];
-        const element = document.getElementById('station-' + stationName);
+        let elementId = 'station-' + stationName;
+
+        // Araneta Center-Cubao Identifier (LRT 2 BA OR MRT 3//
+        if (stationName === "Araneta Cubao") {
+            const neighbor = finalPath[j - 1] || finalPath[j + 1];
+
+            if (neighbor && FARE_DATA.MRT3.stations.includes(neighbor)) {
+                elementId += '-MRT3';
+            } else {
+                elementId += '-LRT2';
+            }
+        }
+
+        const element = document.getElementById(elementId);
         if (element) {
             element.classList.add('shortest-path');
+        } else {
+            console.log("Could not find element with ID:", elementId);
         }
         j++;
     }, 100);
-}
+}   
