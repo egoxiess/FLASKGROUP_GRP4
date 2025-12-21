@@ -217,23 +217,30 @@ function animatePath(finalPath) {
         const stationName = finalPath[j];
         let elementId = 'station-' + stationName;
 
-        // Araneta Center-Cubao Identifier (LRT 2 BA OR MRT 3//
+        // Special handling for Araneta Cubao
         if (stationName === "Araneta Cubao") {
-            const neighbor = finalPath[j - 1] || finalPath[j + 1];
+            const prev = finalPath[j - 1];
+            const next = finalPath[j + 1];
+            const prevLine = prev ? getStationLine(prev) : null;
+            const nextLine = next ? getStationLine(next) : null;
 
-            if (neighbor && FARE_DATA.MRT3.stations.includes(neighbor)) {
-                elementId += '-MRT3';
-            } else {
-                elementId += '-LRT2';
+            const lrt2Element = document.getElementById('station-Araneta Cubao-LRT2');
+            const mrt3Element = document.getElementById('station-Araneta Cubao-MRT3');
+
+            if (prevLine && nextLine && prevLine !== nextLine) {
+                if (lrt2Element) lrt2Element.classList.add('shortest-path');
+                if (mrt3Element) mrt3Element.classList.add('shortest-path');
+            } else if (prevLine === 'LRT2' || nextLine === 'LRT2') {
+                if (lrt2Element) lrt2Element.classList.add('shortest-path');
+            } else if (prevLine === 'MRT3' || nextLine === 'MRT3') {
+                if (mrt3Element) mrt3Element.classList.add('shortest-path');
             }
-        }
-
-        const element = document.getElementById(elementId);
-        if (element) {
-            element.classList.add('shortest-path');
         } else {
-            console.log("Could not find element with ID:", elementId);
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.classList.add('shortest-path');
+            }
         }
         j++;
     }, 100);
-}   
+}
