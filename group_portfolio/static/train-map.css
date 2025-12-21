@@ -358,3 +358,11 @@
     text-shadow: 1px 1px 0px #332244;
     line-height: 1;
 }
+
+/* Chosen Stations Style */
+.station-name {
+    font-family: 'Navigation', Arial, sans-serif;
+    font-size: 12px;
+    color: #333;
+    margin-left: 5px;
+}
