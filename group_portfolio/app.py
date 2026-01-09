@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 from queue_deque import Queue, Deque
 from binary_tree import BinaryTree
 from bst import BinarySearchTree
-
+from collections import deque as PythonDeque
 
 app = Flask(__name__)
 
@@ -172,5 +172,103 @@ def bst_page():
                            message=message,
                            highlight_val=highlight_val)
 
+@app.route("/graph-train", methods=["GET", "POST"])
+def bfs_page():
+    path = None
+    visited_order = None
+    error = None
+    start = None
+    goal = None
+    
+    if request.method == "POST":
+        start = request.form.get("start")
+        goal = request.form.get("goal")
+        
+        if start and goal:
+            path, visited_order = train.bfs_shortest_path(start, goal)
+            if not path:
+                error = "No path found."
+        else:
+            error = "Please select both stations."
+
+    return render_template("graph-train.html", 
+                           path=path, 
+                           visited_order=visited_order,
+                           error=error,
+                           start=start,
+                           goal=goal)
+
+class TrainGraph:
+    def __init__(self):
+        self.graph = {}
+
+    def add_station(self, station):
+        if station not in self.graph:
+            self.graph[station] = []
+
+    def add_connection(self, s1, s2):
+        if s1 in self.graph and s2 in self.graph:
+            self.graph[s1].append(s2)
+            self.graph[s2].append(s1)
+
+    def bfs_shortest_path(self, start, goal):
+        queue = PythonDeque([(start, [start])])
+        visited = set()
+        visited_order = []
+
+        while queue:
+            (vertex, path) = queue.popleft()
+
+            if vertex not in visited:
+                visited.add(vertex)
+                visited_order.append(vertex)
+
+                if vertex == goal:
+                    return path, visited_order
+
+                for neighbor in self.graph.get(vertex, []):
+                    if neighbor not in visited:
+                        queue.append((neighbor, path + [neighbor]))
+        
+        return None, visited_order
+
+train = TrainGraph()
+
+mrt3 = [
+    "North Avenue", "Quezon Avenue", "GMA Kamuning", "Araneta Cubao",
+    "Santolan-Annapolis", "Ortigas", "Shaw Boulevard", "Boni",
+    "Guadalupe", "Buendia", "Ayala", "Magallanes", "Taft Avenue"
+]
+
+lrt1 = [
+    "Fernando Poe Jr.", "Balintawak", "Monumento", "5th Avenue",
+    "R. Papa", "Abad Santos", "Blumentritt", "Tayuman",
+    "Bambang", "Doroteo Jose", "Carriedo", "Central Terminal",
+    "United Nations", "Pedro Gil", "Quirino", "Vito Cruz",
+    "Gil Puyat", "Libertad", "EDSA", "Baclaran","Redemptorist-Aseana",
+    "MIA Road", "PITX", "Ninoy Aquino Avenue", "Dr. Santos"
+]
+
+lrt2 = [
+    "Recto", "Legarda", "Pureza", "V. Mapa",
+    "J. Ruiz", "Gilmore", "Betty Go-Belmonte",
+    "Araneta Cubao", "Anonas", "Katipunan",
+    "Santolan", "Marikina-Pasig", "Antipolo"
+]
+
+for line in [mrt3, lrt1, lrt2]:
+    for station in line:
+        train.add_station(station)
+
+for line in [mrt3, lrt1, lrt2]:
+    for i in range(len(line) - 1):
+        train.add_connection(line[i], line[i + 1])
+
+train.add_connection("EDSA", "Taft Avenue")
+train.add_connection("Doroteo Jose", "Recto")
+
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
