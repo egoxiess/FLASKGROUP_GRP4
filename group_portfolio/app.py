@@ -1,9 +1,10 @@
 import json
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from queue_deque import Queue, Deque
 from binary_tree import BinaryTree
 from bst import BinarySearchTree
 from collections import deque as PythonDeque
+from bubble_sort import bubble_sort_steps
 
 app = Flask(__name__)
 
@@ -267,8 +268,18 @@ for line in [mrt3, lrt1, lrt2]:
 train.add_connection("EDSA", "Taft Avenue")
 train.add_connection("Doroteo Jose", "Recto")
 
+@app.route('/bubble-sort', methods=["GET", "POST"])
+def bubble_sort_page():
+    if request.method == "POST":
+
+        data = request.get_json()
+        numbers = data.get('numbers', [])
+        
+        steps = bubble_sort_steps(numbers)
+        
+        return jsonify({'steps': steps})
+    
+    return render_template('bubble_sort.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
