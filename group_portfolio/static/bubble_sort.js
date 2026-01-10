@@ -1,20 +1,19 @@
-let numbers = []; 
-let isAnimating = false; 
+let numbers = [];
+let isAnimating = false;
 
 function addNumber() {
     const input = document.getElementById('numberInput');
     const value = parseInt(input.value);
     
-    
     if (isNaN(value)) {
-        alert('Please enter a valid number!'); 
+        alert('Please enter a valid number!');
         return;
     }
     
     numbers.push(value);
     input.value = '';
     updateArrayDisplay();
-    input.focus(); 
+    input.focus();
 }
 
 function updateArrayDisplay() {
@@ -22,20 +21,20 @@ function updateArrayDisplay() {
     
     if (numbers.length === 0) {
         display.innerHTML = '<p class="empty-message">No numbers yet. Add some numbers to begin!</p>';
-        
         return;
     }
     
     display.innerHTML = numbers.map(num => 
         `<span class="array-number">${num}</span>`
     ).join('');
+}
 
 function resetArray() {
     if (isAnimating) {
-        alert('The animation is cute, so please watch it first!'); 
+        alert('Please wait for the animation to finish!');
         return;
     }
-    
+
     numbers = [];
     updateArrayDisplay();
     document.getElementById('visualization').innerHTML = '';
@@ -50,7 +49,7 @@ async function startBubbleSort() {
     if (isAnimating) {
         return;
     }
-    
+
     isAnimating = true;
     document.getElementById('sortBtn').disabled = true;
     
@@ -65,8 +64,6 @@ async function startBubbleSort() {
         
         const data = await response.json();
         await animateBubbleSort(data.steps);
-        
- 
         numbers = data.steps[data.steps.length - 1].array;
         updateArrayDisplay();
         
@@ -87,12 +84,11 @@ function createBubbles(array) {
         const bubble = document.createElement('div');
         bubble.className = 'bubble';
         bubble.id = `bubble-${index}`;
-        
         bubble.innerHTML = `
             <div class="bubble-circle">${num}</div>
             <div class="bubble-index">Index ${index}</div>
         `;
-        
+   
         visualization.appendChild(bubble);
     });
 }
