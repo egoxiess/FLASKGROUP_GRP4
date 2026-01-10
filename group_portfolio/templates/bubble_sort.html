@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bubble_sort.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body style="background-color: #772244;">
+    <div class="bubble-container">
+        <h1 class="bubble-title">Bubble Sort</h1>
+        <p class="bubble-note">(whole numbers only)</p>
+        
+        <div class="back-button-container">
+            <a href="/works"><button class="button2">← Back</button></a>
+        </div>
+        
+        <div class="input-section">
+            <form class="controls">
+                <input type="text" id="numberInput" placeholder="Enter a number" class="number-input">
+                
+                <button type="button" onclick="addNumber()" class="bubble-btn">Add Number</button>
+            </form>
+            
+            <div class="array-display" id="arrayDisplay">
+                <div class="empty-message">No numbers yet. Add some numbers to begin!</div>
+            </div>
+            
+            <div class="button-group">
+                <button onclick="startBubbleSort()" class="bubble-btn bubble-btn-sort" id="sortBtn">
+                    Bubble Sort
+                </button>
+                <button onclick="resetArray()" class="bubble-btn bubble-btn-reset">
+                    Reset
+                </button>
+            </div>
+        </div>
+        
+        <div class="visualization" id="visualization"></div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='bubble_sort.js') }}"></script>
+</body>
+</html>
