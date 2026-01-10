@@ -1,0 +1,218 @@
+.bubble-container {
+    max-width: 1000px;
+    position: relative;
+    top: 40px;
+    margin: 0 auto;
+    margin-bottom: 80px; 
+    padding: 50px;
+    background-color: #FFFFF0; 
+    border: 3px solid #332244; 
+    border-radius: 15px;
+}
+
+.bubble-title {
+    font-family: 'Home', Arial, sans-serif;
+    color: #ee9955; 
+    text-align: center;
+    font-size: 40pt;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.back-button-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+
+.input-section {
+    margin-bottom: 30px;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.number-input {
+    padding: 10px;
+    border: 2px solid #332244;
+    border-radius: 5px;
+    font-family: 'NormalFont', Arial, sans-serif;
+    width: 200px;
+    font-size: 16px;
+}
+
+.bubble-btn {
+    cursor: pointer;
+    background-color: #eedd88; 
+    border: 2px solid #332244;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-family: 'Navigation', Arial, sans-serif;
+    letter-spacing: 2px;
+    transition: background-color 0.3s;
+}
+
+.bubble-btn:hover {
+    background-color: #e06699;
+}
+
+.bubble-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    border-color: #999;
+}
+
+
+.bubble-btn-sort {
+    font-size: 16px;
+    padding: 12px 25px;
+}
+
+
+.bubble-btn-reset {
+    background-color: #e06699;
+}
+
+.bubble-btn-reset:hover {
+    background-color: #cd4d82;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+.array-display {
+    background-color: #fff;
+    border: 2px solid #332244;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.empty-message {
+    font-family: 'NormalFont', Arial, sans-serif;
+    color: #888;
+    font-style: italic;
+}
+
+
+.array-number {
+    background-color: #eedd88;
+    border: 1px solid #332244;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-family: 'NormalFont', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.visualization {
+    background-color: #fff;
+    border: 2px solid #332244;
+    border-radius: 10px;
+    padding: 30px 20px;
+    margin-bottom: 20px; 
+    min-height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+}
+
+
+.bubble {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.5s ease;
+}
+
+
+.bubble-circle {
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%;
+    background: #ee9955; 
+    border: 3px solid #332244; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFF0; 
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'NormalFont', Arial, sans-serif;
+    box-shadow: 0 4px 10px rgba(51, 34, 68, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+
+.bubble-circle::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 40%;
+    height: 40%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+}
+
+
+.bubble.comparing .bubble-circle {
+    background: #eedd88;
+    color: #332244;
+    border-color: #ee9955;
+    animation: pulse 0.5s ease-in-out;
+}
+
+
+.bubble.swapping {
+    animation: float 0.8s ease-in-out;
+}
+
+
+.bubble.sorted .bubble-circle {
+    background: #e06699;
+    color: #FFFFF0;
+    border-color: #cd4d82;
+}
+
+
+.bubble-index {
+    margin-top: 5px; 
+    font-size: 11px;
+    color: #332244;
+    font-weight: bold;
+    font-family: 'NormalFont', Arial, sans-serif;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-25px); }
+}
