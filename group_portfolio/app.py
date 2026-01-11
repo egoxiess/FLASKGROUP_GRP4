@@ -6,7 +6,7 @@ from bst import BinarySearchTree
 from collections import deque as PythonDeque
 from bubble_sort import bubble_sort_steps
 from selection_sort import selection_sort_steps
-from quick_sort import quick_sort_ste
+from quick_sort import quick_sort_steps
 
 app = Flask(__name__)
 
@@ -309,5 +309,6 @@ def quick_sort_page():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
