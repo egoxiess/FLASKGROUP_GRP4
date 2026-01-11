@@ -36,6 +36,10 @@ function createBoxElement(num, index) {
     box.className = 'box-container';
     box.id = `box-id-${Date.now()}-${Math.random()}`; 
     box.innerHTML = `
+        <div class="pivot-label">
+            <span class="pivot-text">PIVOT</span>
+            <span class="pivot-arrow">▼</span>
+        </div>
         <div class="box-shape">${num}</div>
         <div class="box-index">Index ${index}</div>
     `;
@@ -48,9 +52,9 @@ function renderPositions() {
     const totalBoxes = boxElements.length;
     
     if (totalBoxes === 0) return;
+
     const totalGroupWidth = (totalBoxes * BOX_WIDTH) + ((totalBoxes - 1) * GAP);
     let startX = (containerWidth - totalGroupWidth) / 2;
-
     if (startX < 20) startX = 20;
 
     boxElements.forEach((box, index) => {
