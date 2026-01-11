@@ -224,13 +224,11 @@ function animatePath(finalPath) {
             const prevLine = prev ? getStationLine(prev) : null;
             const nextLine = next ? getStationLine(next) : null;
 
-            const lrt2Element = document.getElementById('station-Araneta Cubao-LRT2');
+            const lrt2Element = document.getElementById('station-Araneta Cubao');
             const mrt3Element = document.getElementById('station-Araneta Cubao-MRT3');
 
-            if (prevLine && nextLine && prevLine !== nextLine) {
-                if (lrt2Element) lrt2Element.classList.add('shortest-path');
-                if (mrt3Element) mrt3Element.classList.add('shortest-path');
-            } else if (prevLine === 'LRT2' || nextLine === 'LRT2') {
+            // Only highlight the circle corresponding to the line we're on
+            if (prevLine === 'LRT2' || nextLine === 'LRT2') {
                 if (lrt2Element) lrt2Element.classList.add('shortest-path');
             } else if (prevLine === 'MRT3' || nextLine === 'MRT3') {
                 if (mrt3Element) mrt3Element.classList.add('shortest-path');
