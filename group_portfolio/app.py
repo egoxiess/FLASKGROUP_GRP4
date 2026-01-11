@@ -7,6 +7,7 @@ from collections import deque as PythonDeque
 from bubble_sort import bubble_sort_steps
 from selection_sort import selection_sort_steps
 from quick_sort import quick_sort_steps
+from insertion_sort import insertion_sort_steps
 
 app = Flask(__name__)
 
@@ -307,8 +308,19 @@ def quick_sort_page():
 
     return render_template("quick_sort.html")
 
+@app.route("/insertion-sort", methods=["GET", "POST"])
+def insertion_sort():
+    if request.method == "POST":
+        data = request.get_json()
+        numbers = data.get('numbers', [])
+        steps = insertion_sort_steps(numbers)
+        return jsonify({'steps': steps})
+    
+    return render_template("insertion_sort.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
