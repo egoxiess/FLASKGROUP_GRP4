@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Sort</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='quick_sort.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body style="background-color: #772244;">
+    <div class="quick-sort-container">
+        <h1 class="quick-sort-title">Quick Sort</h1>
+        
+        <div class="back-button-container">
+            <a href="/works"><button class="button2">← Back</button></a>
+        </div>
+        
+        <div class="visualization" id="visualization">
+            <div class="empty-message">Currently Empty</div>
+        </div>
+
+        <div class="input-section">
+            <form class="controls" onsubmit="event.preventDefault(); addNumber();">
+                <input type="text" id="numberInput" placeholder="Enter a number" class="number-input" autocomplete="off">
+                <button type="submit" class="quick-sort-btn">Add</button>
+            </form>
+            
+            <div class="button-group">
+                <button onclick="startQuickSort()" class="quick-sort-btn quick-sort-btn-sort" id="sortBtn">
+                    Quick Sort
+                </button>
+                <button onclick="resetArray()" class="quick-sort-btn quick-sort-btn-reset">
+                    Reset
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='quick_sort.js') }}"></script>
+</body>
+</html>
