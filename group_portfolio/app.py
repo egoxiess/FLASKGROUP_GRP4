@@ -8,6 +8,7 @@ from bubble_sort import bubble_sort_steps
 from selection_sort import selection_sort_steps
 from quick_sort import quick_sort_steps
 from insertion_sort import insertion_sort_steps
+from merge_sort import merge_sort_steps
 
 app = Flask(__name__)
 
@@ -317,6 +318,19 @@ def insertion_sort():
         return jsonify({'steps': steps})
     
     return render_template("insertion_sort.html")
+
+@app.route('/merge-sort', methods=["GET", "POST"])
+def merge_sort_page():
+    if request.method == "POST":
+
+        data = request.get_json()
+        numbers = data.get('numbers', [])
+
+        steps = merge_sort_steps(numbers)
+
+        return jsonify({'steps': steps})
+
+    return render_template('merge_sort.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
