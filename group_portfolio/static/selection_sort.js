@@ -53,7 +53,7 @@ async function startSelectionSort() {
     }
 
     isAnimating = true;
-    currentMinIndex = -1; // Reset current min
+    currentMinIndex = -1; 
     document.getElementById('sortBtn').disabled = true;
     
     try {
@@ -113,22 +113,20 @@ async function animateSelectionSort(steps) {
         
         await sleep(300);
     }
-    currentMinIndex = -1; // Reset after animation
+    currentMinIndex = -1; 
 }
 
 async function updateCurrentMin(newMinIndex) {
-    // Remove previous min highlight
     if (currentMinIndex !== -1) {
         const prevSelection = document.getElementById(`selection-${currentMinIndex}`);
         if (prevSelection) prevSelection.classList.remove('current-min');
     }
     
-    // Add new min highlight
     currentMinIndex = newMinIndex;
     const selection = document.getElementById(`selection-${currentMinIndex}`);
     if (selection) selection.classList.add('current-min');
     
-    await sleep(200); // Short pause to show the update
+    await sleep(200); 
 }
 
 async function highlightComparison(indices) {
@@ -170,7 +168,7 @@ async function animateSwap(indices, newArray) {
 function markAllSorted() {
     const selections = document.querySelectorAll('.selection');
     selections.forEach((selection, index) => {
-        selection.classList.remove('current-min'); // Ensure current-min is removed
+        selection.classList.remove('current-min'); 
         setTimeout(() => {
             selection.classList.add('sorted');
         }, index * 100);
