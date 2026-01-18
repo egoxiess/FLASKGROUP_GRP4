@@ -1,5 +1,6 @@
 let numbers = [];
 let isAnimating = false;
+let currentMinIndex = -1;
 
 function addNumber() {
     const input = document.getElementById('numberInput');
@@ -36,6 +37,7 @@ function resetArray() {
     }
 
     numbers = [];
+    currentMinIndex = -1;
     updateArrayDisplay();
     document.getElementById('visualization').innerHTML = '';
 }
@@ -51,6 +53,7 @@ async function startSelectionSort() {
     }
 
     isAnimating = true;
+    currentMinIndex = -1; // Reset current min
     document.getElementById('sortBtn').disabled = true;
     
     try {
@@ -64,7 +67,6 @@ async function startSelectionSort() {
         
         const data = await response.json();
         await animateSelectionSort(data.steps);
-        numbers = data.steps[data.steps.length - 1].array;
         updateArrayDisplay();
         
     } catch (error) {
@@ -85,10 +87,10 @@ function createSelections(array) {
         selection.className = 'selection';
         selection.id = `selection-${index}`;
         selection.innerHTML = `
+            <div class="min-label">Min. Digit</div>
             <div class="selection-box">${num}</div>
             <div class="selection-index">Index ${index}</div>
         `;
-   
         visualization.appendChild(selection);
     });
 }
@@ -99,7 +101,9 @@ async function animateSelectionSort(steps) {
     for (let i = 0; i < steps.length; i++) {
         const step = steps[i];
         
-        if (step.type === 'compare') {
+        if (step.type === 'min_update') {
+            await updateCurrentMin(step.indices[0]);
+        } else if (step.type === 'compare') {
             await highlightComparison(step.indices);
         } else if (step.type === 'swap') {
             await animateSwap(step.indices, step.array);
@@ -109,6 +113,22 @@ async function animateSelectionSort(steps) {
         
         await sleep(300);
     }
+    currentMinIndex = -1; // Reset after animation
+}
+
+async function updateCurrentMin(newMinIndex) {
+    // Remove previous min highlight
+    if (currentMinIndex !== -1) {
+        const prevSelection = document.getElementById(`selection-${currentMinIndex}`);
+        if (prevSelection) prevSelection.classList.remove('current-min');
+    }
+    
+    // Add new min highlight
+    currentMinIndex = newMinIndex;
+    const selection = document.getElementById(`selection-${currentMinIndex}`);
+    if (selection) selection.classList.add('current-min');
+    
+    await sleep(200); // Short pause to show the update
 }
 
 async function highlightComparison(indices) {
@@ -150,6 +170,7 @@ async function animateSwap(indices, newArray) {
 function markAllSorted() {
     const selections = document.querySelectorAll('.selection');
     selections.forEach((selection, index) => {
+        selection.classList.remove('current-min'); // Ensure current-min is removed
         setTimeout(() => {
             selection.classList.add('sorted');
         }, index * 100);
