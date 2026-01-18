@@ -227,7 +227,6 @@
     50% { transform: translateY(-25px); }
 }
 
-/* Bar chart styles */
 .bar-container {
     display: flex;
     flex-direction: column;
