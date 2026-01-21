@@ -21,18 +21,17 @@
 
 /*  IMAGE OVERLAP EFFECT SA INDEX*/
 .overlap_bubble img {
-    width: 210px;
-    margin-left: -10px;
+    width: 170px;
+    margin-left: 102px;
     position: absolute;
     z-index: 1;
 }
 
 .overlap_stars img {
-    width: 170px;
+    width: 200px;
     position: absolute;
-    z-index: 1;
-    left: 30px;
-    bottom: 20px;
+    left: 20px;
+    bottom: 98px;
 }
 
 /*  CUSTOM CONTAINERS */
@@ -59,8 +58,6 @@
     display: flex;
     flex-direction: column;
     align-items: right;
-    justify-content: right;
-    gap: 20px;
 }
 
 
