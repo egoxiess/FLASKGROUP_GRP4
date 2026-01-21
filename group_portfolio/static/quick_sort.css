@@ -1,0 +1,220 @@
+.quick-sort-container {
+    max-width: 1000px;
+    position: relative;
+    top: 40px;
+    margin: 0 auto;
+    margin-bottom: 60px;
+    padding: 50px;
+    background-color: #FFFFF0;
+    border: 3px solid #332244; 
+    border-radius: 15px;
+}
+
+.quick-sort-title {
+    font-family: 'Home', Arial, sans-serif;
+    color: #ee9955;
+    text-align: center;
+    font-size: 40pt;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.back-button-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.input-section {
+    margin-bottom: 30px;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+ 
+.number-input {
+    padding: 10px;
+    border: 2px solid #332244;
+    border-radius: 5px;
+    font-family: 'NormalFont', Arial, sans-serif;
+    width: 200px;
+    font-size: 16px;
+}
+
+.quick-sort-btn {
+    cursor: pointer;
+    background-color: #eedd88;
+    border: 2px solid #332244;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-family: 'Navigation', Arial, sans-serif;
+    letter-spacing: 2px;
+    transition: background-color 0.3s;
+}
+
+.quick-sort-btn:hover {
+    background-color: #e06699;
+}
+
+.quick-sort-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    border-color: #999;
+}
+
+.quick-sort-btn-sort {
+    font-size: 16px;
+    padding: 12px 25px;
+}
+
+.quick-sort-btn-reset {
+    background-color: #e06699;
+}
+
+.quick-sort-btn-reset:hover {
+    background-color: #cd4d82;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.visualization {
+    background-color: #fff;
+    border: 2px solid #332244;
+    border-radius: 10px;
+    padding: 30px 20px;
+    margin-bottom: 20px;
+    height: 200px; 
+    position: relative; 
+    overflow-x: auto; 
+    display: block; 
+}
+
+.empty-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    font-family: 'NormalFont', Arial, sans-serif;
+    color: #888;
+    font-style: italic;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+.box-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: left 0.6s ease-in-out, top 0.6s ease-in-out; 
+}
+
+.box-shape {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px; 
+    background: #ee9955;
+    border: 3px solid #332244;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFF0;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'NormalFont', Arial, sans-serif;
+    box-shadow: 4px 4px 0px rgba(51, 34, 68, 0.2); 
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s;
+    z-index: 1;
+}
+
+.pivot-label {
+    position: absolute;
+    top: -55px;
+    color: #9966cc; 
+    font-weight: bold;
+    font-family: 'NormalFont', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.2;
+    
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.pivot-text {
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.pivot-arrow {
+    font-size: 18px;
+    margin-top: -5px;
+}
+
+.box-container.pivot .pivot-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.box-container.pivot .box-shape {
+    background: #9966cc; 
+    color: #FFFFF0;
+    border-color: #663399;
+    transform: scale(1.1);
+    box-shadow: 6px 6px 0px rgba(102, 51, 153, 0.3);
+    z-index: 5;
+}
+
+.box-container.comparing .box-shape {
+    background: #eedd88;
+    color: #332244;
+    border-color: #ee9955;
+    animation: pulse 0.4s ease-in-out; 
+}
+
+.box-container.swapping {
+    z-index: 10;
+}
+.box-container.swapping .box-shape {
+    background: #e06699;
+    border-color: #cd4d82;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+    transform: translateY(-25px) scale(1.1); 
+}
+ 
+.box-container.sorted .box-shape {
+    background: #e06699;
+    color: #FFFFF0;
+    border-color: #cd4d82;
+}
+
+.box-index {
+    margin-top: 5px;
+    font-size: 11px;
+    color: #332244;
+    font-weight: bold;
+    font-family: 'NormalFont', Arial, sans-serif;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}

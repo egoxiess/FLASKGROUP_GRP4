@@ -227,6 +227,7 @@ function animatePath(finalPath) {
             const lrt2Element = document.getElementById('station-Araneta Cubao-LRT2');
             const mrt3Element = document.getElementById('station-Araneta Cubao-MRT3');
 
+            // If there's a line transfer at this station, light up both circles
             if (prevLine && nextLine && prevLine !== nextLine) {
                 if (lrt2Element) lrt2Element.classList.add('shortest-path');
                 if (mrt3Element) mrt3Element.classList.add('shortest-path');

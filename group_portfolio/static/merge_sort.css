@@ -1,0 +1,61 @@
+.visualization {
+    background-color: #fff;
+    border: 2px solid #332244;
+    border-radius: 10px;
+    padding: 20px;
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.merge-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: nowrap;
+}
+
+.merge-block {
+    width: 60px;
+    height: 60px;
+    background: #ee9955;
+    border: 3px solid #332244;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFF0;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: transform 0.6s ease, background-color 0.4s ease;
+}
+
+.merge-block.compare {
+    background: #eedd88;
+    color: #332244;
+}
+
+.merge-block.merging {
+    background: #ffcc66;
+    color: #332244;
+}
+
+.merge-block.sorted {
+    background: #e06699;
+    color: #FFFFF0;
+}
+
+.merge-split {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.merge-split .merge-row {
+    height: 100px;
+}

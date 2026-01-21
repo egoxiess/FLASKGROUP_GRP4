@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Merge Sort</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='selection_sort.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='merge_sort.css') }}">
+</head>
+
+<body style="background-color: #772244;">
+    <div class="selection-container">
+        <h1 class="selection-title">Merge Sort</h1>
+        <p class="selection-note">(whole numbers only)</p>
+
+        <div class="back-button-container">
+            <a href="/works"><button class="button2">← Back</button></a>
+        </div>
+
+        <div class="input-section">
+            <input type="text" id="numberInput" class="number-input" placeholder="Enter a number">
+            <button onclick="addNumber()" class="selection-btn">Add Number</button>
+
+            <div class="array-display" id="arrayDisplay">
+                <div class="empty-message">No numbers yet. Add some numbers to begin!</div>
+            </div>
+
+            <div class="button-group">
+                <button onclick="startMergeSort()" class="selection-btn selection-btn-sort" id="sortBtn">
+                    Merge Sort
+                </button>
+                <button onclick="resetArray()" class="selection-btn selection-btn-reset">
+                    Reset
+                </button>
+            </div>
+        </div>
+
+        <div class="visualization" id="visualization"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='merge_sort.js') }}"></script>
+</body>
+</html>
