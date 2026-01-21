@@ -5,6 +5,11 @@ def selection_sort_steps(numbers):
 
     for i in range(n):
         min_idx = i
+        steps.append({
+            'type': 'min_update',
+            'indices': [min_idx],
+            'array': arr.copy()
+        })
         for j in range(i + 1, n):
             steps.append({
                 'type': 'compare',
@@ -13,6 +18,11 @@ def selection_sort_steps(numbers):
             })
             if arr[j] < arr[min_idx]:
                 min_idx = j
+                steps.append({
+                    'type': 'min_update',
+                    'indices': [min_idx],
+                    'array': arr.copy()
+                })
 
         if min_idx != i:
             arr[i], arr[min_idx] = arr[min_idx], arr[i]
