@@ -10,42 +10,70 @@ def merge_sort_steps(numbers):
             merge(left, mid, right)
 
     def merge(left, mid, right):
-        i = left
-        j = mid + 1
+        left_part = arr[left:mid+1]
+        right_part = arr[mid+1:right+1]
 
-        while i <= mid and j <= right:
+        steps.append({
+            "type": "merge_start",
+            "left": left,
+            "mid": mid,
+            "right": right,
+            "array": arr.copy()
+        })
+
+        i = 0
+        j = 0
+        k = left
+
+        while i < len(left_part) and j < len(right_part):
             steps.append({
-                'type': 'compare',
-                'indices': [i, j],
-                'array': arr.copy()
+                "type": "compare",
+                "indices": [left + i, mid + 1 + j],
+                "array": arr.copy()
             })
 
-            if arr[i] <= arr[j]:
+            if left_part[i] <= right_part[j]:
+                arr[k] = left_part[i]
                 i += 1
             else:
-                value = arr[j]
-                k = j
-                while k > i:
-                    arr[k] = arr[k - 1]
-                    k -= 1
-                arr[i] = value
-
-                steps.append({
-                    'type': 'swap',
-                    'indices': [i, j],
-                    'array': arr.copy()
-                })
-
-                i += 1
-                mid += 1
+                arr[k] = right_part[j]
                 j += 1
+
+            steps.append({
+                "type": "overwrite",
+                "index": k,
+                "value": arr[k],
+                "array": arr.copy()
+            })
+            k += 1
+
+        while i < len(left_part):
+            arr[k] = left_part[i]
+            i += 1
+            steps.append({
+                "type": "overwrite",
+                "index": k,
+                "value": arr[k],
+                "array": arr.copy()
+            })
+            k += 1
+
+        while j < len(right_part):
+            arr[k] = right_part[j]
+            j += 1
+            steps.append({
+                "type": "overwrite",
+                "index": k,
+                "value": arr[k],
+                "array": arr.copy()
+            })
+            k += 1
 
     merge_sort(0, len(arr) - 1)
 
     steps.append({
-        'type': 'done',
-        'indices': [],
-        'array': arr.copy()
+        "type": "done",
+        "array": arr.copy()
     })
 
     return steps
